@@ -5,21 +5,123 @@
     android:orientation="vertical"
     android:layout_gravity="center">
 
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@id/imageP"
+        android:layout_alignParentRight="true"
+        android:text="Done" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@id/imageP"
+        android:layout_alignParentLeft="true"
+        android:text="Cancel" />
+
     <ImageView
         android:id="@+id/imageP"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/img"/>
 
     <TextView
-        android:id="@+id/textP"
+        android:id="@+id/textNam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+        android:layout_below="@id/imageP"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:text="Name"
+        android:textSize="20sp"/>
+    <EditText
+        android:id="@+id/nameInput"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/textNam"
+        android:layout_below="@id/imageP"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/textPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textNam"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:text="Phone"
+        android:textSize="20sp"/>
+    <EditText
+        android:id="@+id/phoneInput"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textPhone"
+        android:layout_below="@id/nameInput"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:inputType="text"/>
+
+    <TextView
+    android:id="@+id/textAddress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/imageP"
+    android:layout_alignParentLeft="true"
+    android:layout_marginTop="130dp"
+    android:layout_marginLeft="10dp"
+    android:text="Address"
+    android:textSize="20sp"/>
+    <EditText
+        android:id="@+id/addressInput"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textAddress"
+        android:layout_below="@id/imageP"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="125dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/textGraduateDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageP"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="180dp"
+        android:layout_marginLeft="10dp"
+        android:text="Graduate Date"
+        android:textSize="20sp"/>
+    <EditText
+        android:id="@+id/graduateInput"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textGraduateDate"
+        android:layout_below="@id/imageP"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="175dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:inputType="text"/>
 
 </RelativeLayout>
