@@ -72,6 +72,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
 
     public void insert(User Data) {
 
+
     }
 
     public ArrayList<User> search(String word) {
