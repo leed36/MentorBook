@@ -39,6 +39,8 @@ import kotlinx.android.synthetic.main.activity_mentee_signup.*
  * A login screen that offers login via email/password.
  */
 class MenteeSignUp : AppCompatActivity(){
+    val db = DatabaseManager(this)
+    val user = User()
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -82,10 +84,9 @@ class MenteeSignUp : AppCompatActivity(){
             /*
              *  Registration is complete, save info in database and go to main activity
              */
+            //INSERT USER FIELDS HERE
 
-            var user = User(username, password)
-            val db = DatabaseManager(this)
-            db.insert(user)
+            db.insertWithEmailAndPW(user)
 
             val insertIntent = Intent(this, MainActivity::class.java)
             this.startActivity(insertIntent)
