@@ -85,6 +85,13 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void insertBioWithEmail(User user) { //update
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sqlInsert = "update" + TABLE_USER;
+        sqlInsert += "set " +;
+        sqlInsert += "where " + EMAIL + " = " + user.getEMAIL();
+    }
+
     public void deleteByEmail(String email) {
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlDelete = "delete from " + TABLE_USER;

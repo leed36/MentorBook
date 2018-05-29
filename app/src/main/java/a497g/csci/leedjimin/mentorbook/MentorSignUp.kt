@@ -76,9 +76,9 @@ class MentorSignUp : AppCompatActivity(){
              *  Registration is complete, save info in database and go to main activity
              */
 
-            var user = User(username, password)
+            var user = User()
             val db = DatabaseManager(this)
-            db.insert(user)
+            db.insertWithEmailAndPW(user)
 
             val insertIntent = Intent(this, MainActivity::class.java)
             this.startActivity(insertIntent)
