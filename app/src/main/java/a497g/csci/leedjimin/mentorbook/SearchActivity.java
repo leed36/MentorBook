@@ -33,8 +33,7 @@ public class SearchActivity extends AppCompatActivity {
         String word = searchEdit.getText( ).toString( );
         ArrayList<User> users = dbManager.search(word);
         if (!users.isEmpty()) {
-//            String name = tasks.get(0).getName();
-//            String listing = "Name is: " + name + "\nTasks:";
+            String name = users.get(0).getEMAIL();
             for (User user : users) {
 //                listing += "\n-" + user.getInfo();
             }

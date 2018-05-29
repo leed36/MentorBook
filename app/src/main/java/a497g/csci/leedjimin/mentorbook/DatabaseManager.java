@@ -1,6 +1,7 @@
 package a497g.csci.leedjimin.mentorbook;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -92,8 +93,19 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.close();
     }
 
-    public ArrayList<User> search(String word) {
-        ArrayList userList = new ArrayList<User>();
-        return userList;
+    public ArrayList<User> search(String word) { //FIX THIS
+        String sqlQuery = "select * from " + TABLE_USER;
+        sqlQuery += " where " + EMAIL + " = " + word + "";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        ArrayList<User> users = new ArrayList<User>();
+
+        while (cursor.moveToNext()) {
+            User user = new User();
+            users.add(user);
+        }
+        return users;
     }
 }
