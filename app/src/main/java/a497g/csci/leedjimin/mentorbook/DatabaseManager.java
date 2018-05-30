@@ -88,7 +88,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     public void insertBioWithEmail(User user) { //update
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlInsert = "update" + TABLE_USER;
-        sqlInsert += "set " +;
+        sqlInsert += "set " +"a";
         sqlInsert += "where " + EMAIL + " = " + user.getEMAIL();
     }
 
