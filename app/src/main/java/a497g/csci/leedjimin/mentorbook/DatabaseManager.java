@@ -27,6 +27,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     private static final String SCHOOL_END = "schoolEnd";
 
     private static final String CAREER_TABLE = "careerTable";
+    private static final String CURRENT_POSITION = "currentPosition";
     private static final String START_WORK_YR = "workStart";
     private static final String END_WORK_YR = "workEnd";
     private static final String SCHOOL = "school";
@@ -134,5 +135,14 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             users.add(user);
         }
         return users;
+    }
+
+    public void updateProfile(String nam, String userNam, String web, String headLine, String Phone, String Address){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+    }
+
+    public void updateBio(){
+
     }
 }
