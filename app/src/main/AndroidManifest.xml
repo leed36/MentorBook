@@ -25,12 +25,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".MentorSignUp"
             android:label="@string/title_activity_login" />
         <activity android:name=".SignUp" />
-        <activity
-            android:name=".MainLoginActivity2"
-            android:label="@string/title_activity_main_login2"></activity>
     </application>
 
 </manifest>

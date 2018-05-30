@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorInputBackgroud">#e8e8e8</color>
+    <color name="colorMenteeMentorBtn">#303030</color>
+    <color name="colorSignUp">#7a7a7a</color>
+    <color name="colorHyperlinks">#00a1b8</color>
+
 </resources>
