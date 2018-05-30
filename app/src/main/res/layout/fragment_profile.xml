@@ -23,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:textStyle="bold"
-        android:textSize="30sp"/>
+        android:textSize="28sp"/>
 
 
     <Button
@@ -38,8 +38,8 @@
 
     <ImageView
         android:id="@+id/imageP"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:layout_below="@+id/title"
         android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
