@@ -23,6 +23,7 @@ public class ChapterFragment extends Fragment {
     private android.support.v7.widget.AppCompatImageButton button;
     private EditText newChapter;
     private TextView newChapterNum;
+    private TextView chapt1;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class ChapterFragment extends Fragment {
 
         newChapter = (EditText) view.findViewById(R.id.newChapter);
         newChapterNum = (TextView) view.findViewById(R.id.newChapterNum);
+        chapt1 = (TextView) view.findViewById(R.id.chapt1);
 
 
         button = (android.support.v7.widget.AppCompatImageButton) view.findViewById(R.id.buttonNewChapter);
@@ -59,21 +61,23 @@ public class ChapterFragment extends Fragment {
              */
 
             Toast.makeText(getActivity(), chapter + " Success", Toast.LENGTH_LONG).show();
-            RelativeLayout linearLayout = view.findViewById(R.id.fragmentchapter);
+            chapt1.setText(chapter);
 
-            /** Add textView**/
-            TextView textView = new TextView(getActivity());
-            textView.setId(Integer.parseInt(chapterNum));
-            textView.setLayoutParams(
-                    new LayoutParams(LayoutParams.MATCH_PARENT,
-                        LayoutParams.WRAP_CONTENT));
-            textView.setText(chapter);
-//            textView.setBackground();
-            textView.setPadding(16,16,16,16);
+            //RelativeLayout linearLayout = view.findViewById(R.id.fragmentchapter);
+
+//            /** Add textView**/
+//            TextView textView = new TextView(getActivity());
+//            textView.setId(Integer.parseInt(chapterNum));
+//            textView.setLayoutParams(
+//                    new LayoutParams(LayoutParams.MATCH_PARENT,
+//                        LayoutParams.WRAP_CONTENT));
+//            textView.setText(chapter);
+////            textView.setBackground();
+//            textView.setPadding(16,16,16,16);
 
 
 
-            linearLayout.addView(textView);
+           // linearLayout.addView(textView);
 
 
         }

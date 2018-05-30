@@ -32,7 +32,7 @@ public class ProfileFragment extends Fragment {
         W = (EditText) rootView.findViewById(R.id.websiteInput);
         HL = (EditText) rootView.findViewById(R.id.headlineInput);
         P = (EditText) rootView.findViewById(R.id.phoneInput);
-        A = (EditText) rootView.findViewById(R.id.addressInput);
+       // A = (EditText) rootView.findViewById(R.id.addressInput);
         addData();
         return rootView;
     }

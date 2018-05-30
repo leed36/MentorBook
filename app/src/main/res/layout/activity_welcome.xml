@@ -75,7 +75,6 @@
         android:id="@+id/register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="null"
         android:gravity="center"
         android:text="Dont have an account? Sign up here!"
         android:textSize="12sp"

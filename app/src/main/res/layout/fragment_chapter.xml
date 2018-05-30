@@ -4,12 +4,6 @@
     android:layout_height="match_parent"
     android:id="@+id/fragmentchapter">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chapter Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
     <EditText
         android:id="@+id/newChapter"
         android:layout_width="match_parent"
@@ -42,6 +36,39 @@
         android:layout_marginRight="16dp"
         android:src="@mipmap/ic_addchapter"
         android:background="#00ff00"/>
+    <TextView
+        android:id="@+id/chapt1"
+        android:layout_below="@+id/buttonNewChapter"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+
+        />
+
+    <TextView
+        android:id="@+id/chapt2"
+        android:layout_below="@+id/chapt1"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        />
+    <TextView
+        android:id="@+id/chapt3"
+        android:layout_below="@+id/chapt2"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        />
+    <TextView
+        android:id="@+id/chapt4"
+        android:layout_below="@+id/chapt3"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        />
+    <TextView
+        android:id="@+id/chapt5"
+        android:layout_below="@+id/chapt4"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        />
+
 
 
 
