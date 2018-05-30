@@ -24,10 +24,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MentorSignUp"
             android:label="@string/title_activity_login" />
         <activity android:name=".SignUp" />
+        <activity
+            android:name=".MenteeSignUp"
+            android:label= "Mentee Sign Up"/>
+
     </application>
 
 </manifest>
