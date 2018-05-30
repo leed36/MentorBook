@@ -1,29 +1,11 @@
 package a497g.csci.leedjimin.mentorbook
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.annotation.TargetApi
-import android.content.pm.PackageManager
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-import android.app.LoaderManager.LoaderCallbacks
-import android.content.CursorLoader
-import android.content.Loader
-import android.database.Cursor
-import android.net.Uri
-import android.os.AsyncTask
-import android.os.Build
-import android.os.Bundle
-import android.provider.ContactsContract
-import android.text.TextUtils
-import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.widget.ArrayAdapter
-import android.widget.TextView
 
-import java.util.ArrayList
-import android.Manifest.permission.READ_CONTACTS
+import android.support.v7.app.AppCompatActivity
+import android.os.Bundle
+import android.text.TextUtils
 import android.content.Intent
+import android.widget.Toast
 
 import kotlinx.android.synthetic.main.activity_mentor_signup.*
 
@@ -40,31 +22,45 @@ class MentorSignUp : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mentor_signup)
 
-        var username:String = mentor_email.text.toString()
-        var password:String = mentor_pass.text.toString()
-        var password2:String = mentor_pass2.text.toString()
+        val username:String = mentor_username.text.toString()
+        val email:String = mentor_email.text.toString()
+        val password:String = mentor_pass.text.toString()
+        val password2:String = mentor_pass2.text.toString()
         // Set up the sign in form, get variables
-        mentor_signup_button.setOnClickListener{attemptSignUp(username,password,password2)}
+        mentor_signup_button.setOnClickListener{attemptSignUp(username, email, password,password2)}
 
     }
 
-    fun attemptSignUp(username: String, password:String, password2:String){
+    private fun attemptSignUp(username: String,email:String, password:String, password2:String){
         var check: Boolean = true
 
         /** Check password authenticity **/
         if(!TextUtils.isEmpty(password) && !isPasswordValid(password)){
             check = false
+            Toast.makeText(this, "Invalid password, please try again", Toast.LENGTH_LONG).show()
         }
 
         if(!password.equals(password2)){
+            Toast.makeText(this, "Passwords do not equal, please try again", Toast.LENGTH_LONG).show()
             check = false
         }
 
         /** Check Username **/
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(username)) {
+
+        if(!isUsernameValid(username)){
+            Toast.makeText(this, "Invalid Username, please try again", Toast.LENGTH_LONG).show()
+
+        }
+
+
+        /** Check for a valid email address **/
+        if (!TextUtils.isEmpty(username)) {
+            Toast.makeText(this, "Please enter email, try again", Toast.LENGTH_LONG).show()
+
             check = false
-        } else if (!isEmailValid(username)) {
+        }
+        if (isEmailValid(email)) {
+            Toast.makeText(this, "Please enter valid email, try again", Toast.LENGTH_LONG).show()
             check = false
         }
 
@@ -75,18 +71,23 @@ class MentorSignUp : AppCompatActivity(){
             /*
              *  Registration is complete, save info in database and go to main activity
              */
+            Toast.makeText(this, "Login Sucessful", Toast.LENGTH_LONG).show()
 
-            var user = User(username, password)
+            val user = User(username, email, password, 1)
             val db = DatabaseManager(this)
-            db.insert(user)
+            db.insertWithEmailAndPW(user)
 
             val insertIntent = Intent(this, MainActivity::class.java)
             this.startActivity(insertIntent)
         }
     }
 
+    private fun isUsernameValid(username:String):Boolean{
+        return true
+    }
     fun resetSignUp(){
         mentor_email.setText("")
+        mentor_username.setText("")
         mentor_pass2.setText("")
         mentor_pass.setText("")
 

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 public class SearchActivity extends AppCompatActivity {
     private DatabaseManager dbManager;
     private EditText searchEdit;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.search_main);
         dbManager= new DatabaseManager( this );
 
+        listView = (ListView) findViewById(R.id.listViewSearch);
         searchEdit = (EditText) findViewById(R.id.searchEdit);
     }
 
@@ -30,8 +33,7 @@ public class SearchActivity extends AppCompatActivity {
         String word = searchEdit.getText( ).toString( );
         ArrayList<User> users = dbManager.search(word);
         if (!users.isEmpty()) {
-//            String name = tasks.get(0).getName();
-//            String listing = "Name is: " + name + "\nTasks:";
+            String name = users.get(0).getEMAIL();
             for (User user : users) {
 //                listing += "\n-" + user.getInfo();
             }

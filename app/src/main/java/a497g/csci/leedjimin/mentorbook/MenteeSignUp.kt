@@ -3,42 +3,21 @@ package a497g.csci.leedjimin.mentorbook
 
 
 /*
-
-
------------------ This should be mentee signup -----------------------------
-
+----------------- This is mentee signup -----------------------------
  */
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.annotation.TargetApi
-import android.content.pm.PackageManager
-import android.support.design.widget.Snackbar
+
 import android.support.v7.app.AppCompatActivity
-import android.app.LoaderManager.LoaderCallbacks
-import android.content.CursorLoader
-import android.content.Loader
-import android.database.Cursor
-import android.net.Uri
-import android.os.AsyncTask
-import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.text.TextUtils
-import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.widget.ArrayAdapter
-import android.widget.TextView
-
-import java.util.ArrayList
-import android.Manifest.permission.READ_CONTACTS
 import android.content.Intent
-
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_mentee_signup.*
+
 
 /**
  * A login screen that offers login via email/password.
  */
-class MenteeSignUp : AppCompatActivity(){
+class MenteeSignUp : AppCompatActivity() {
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -48,63 +27,83 @@ class MenteeSignUp : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mentee_signup)
 
-        var username: String = mentee_user_input.text.toString()
-        var password: String = mentee_pass.text.toString()
-        var password2: String = mentee_pass2.text.toString()
+        val username: String = mentee_username.text.toString()
+        val email: String = mentee_email.text.toString()
+        val password: String = mentee_pass.text.toString()
+        val password2: String = mentee_pass2.text.toString()
+        // Set up the sign in form, get variables
+        mentee_signup_button.setOnClickListener { attemptSignUp(username, email, password, password2) }
 
-        mentee_signup_button.setOnClickListener { attemptLogin(username, password, password2) }
     }
 
-    fun attemptLogin(username: String, password:String, password2:String){
+    private fun attemptSignUp(username: String, email: String, password: String, password2: String) {
         var check: Boolean = true
 
         /** Check password authenticity **/
-        if(!TextUtils.isEmpty(password) && !isPasswordValid(password)){
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             check = false
+            Toast.makeText(this, "Invalid password, please try again", Toast.LENGTH_LONG).show()
         }
 
-        if(!password.equals(password2)){
+        if (!password.equals(password2)) {
+            Toast.makeText(this, "Passwords do not equal, please try again", Toast.LENGTH_LONG).show()
             check = false
         }
 
         /** Check Username **/
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(username)) {
+
+        if (!isUsernameValid(username)) {
+            Toast.makeText(this, "Invalid Username, please try again", Toast.LENGTH_LONG).show()
+
+        }
+
+
+        /** Check for a valid email address **/
+        if (!TextUtils.isEmpty(username)) {
+            Toast.makeText(this, "Please enter email, try again", Toast.LENGTH_LONG).show()
+
             check = false
-        } else if (!isEmailValid(username)) {
+        }
+        if (isEmailValid(email)) {
+            Toast.makeText(this, "Please enter valid email, try again", Toast.LENGTH_LONG).show()
             check = false
         }
 
-        if(check == false){
+        if (check == false) {
             resetSignUp()
-        }else{
+        } else {
 
             /*
              *  Registration is complete, save info in database and go to main activity
              */
+            Toast.makeText(this, "Login Sucessful", Toast.LENGTH_LONG).show()
 
-            var user = User(username, password)
+            val user = User(username, email, password, 0)
             val db = DatabaseManager(this)
-            db.insert(user)
+            db.insertWithEmailAndPW(user)
 
             val insertIntent = Intent(this, MainActivity::class.java)
             this.startActivity(insertIntent)
         }
     }
 
-    fun resetSignUp(){
-        mentee_user_input.setText("")
+    private fun isUsernameValid(username: String): Boolean {
+        return true
+    }
+
+    fun resetSignUp() {
+        mentee_email.setText("")
+        mentee_username.setText("")
         mentee_pass2.setText("")
         mentee_pass.setText("")
 
     }
 
-    fun isEmailValid(username:String):Boolean{
+    fun isEmailValid(username: String): Boolean {
         return username.contains("@")
     }
 
-    fun isPasswordValid(password:String):Boolean{
+    fun isPasswordValid(password: String): Boolean {
         return true
     }
-
 }
