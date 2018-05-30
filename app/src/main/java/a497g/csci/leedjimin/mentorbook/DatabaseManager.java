@@ -106,6 +106,20 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.close();
     }
 
+    public User getUser(String username){
+        User user = new User();
+        String sqlQuery = "select * from " + TABLE_USER;
+        sqlQuery += " where " + USERNAME + " = " + username + "";
+
+     /*   SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        if(cursor.moveToFirst()) {
+            user.setUSERNAME(cursor.getColumnIndex(1).toString())
+        }*/
+
+        return user;
+    }
     public ArrayList<User> search(String word) { //FIX THIS
         String sqlQuery = "select * from " + TABLE_USER;
         sqlQuery += " where " + EMAIL + " = " + word + "";
