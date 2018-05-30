@@ -4,20 +4,21 @@ import android.support.constraint.Placeholder;
 
 public class User {
     private int TYPE = 0; //0 for mentee; 1 for mentor
-    private String EMAIL = "email";
-    private String PASSWORD = "password";
-    private String AGE = "age";
-    private String PROFILE_PHOTO = "profilePhoto";
-    private String SCHOOL_START = "schoolStart";
-    private String SCHOOL_END = "schoolEnd";
-    private String PLACE = "place";
-    private String START_WORK_YR = "workStart";
-    private String END_WORK_YR = "workEnd";
-    private String SCHOOL = "school";
-    private String DEGREE_TYPE = "deg_type";
-    private String DEGREE_NAME = "deg_name";
-    private String CLASSNAME = "className";
-    private String YEAR_TAKE = "yearTake";
+    private String USERNAME;
+    private String EMAIL;
+    private String PASSWORD;
+    private String AGE;
+    private String PROFILE_PHOTO;
+    private String SCHOOL_START;
+    private String SCHOOL_END;
+    private String PLACE;
+    private String START_WORK_YR;
+    private String END_WORK_YR;
+    private String SCHOOL;
+    private String DEGREE_TYPE;
+    private String DEGREE_NAME;
+    private String CLASSNAME;
+    private String YEAR_TAKE;
 
     public User() {
     }
@@ -26,6 +27,8 @@ public class User {
     public void setTYPE(int i) {
         this.TYPE = i;
     }
+
+    public void setUSERNAME(String un) { this.USERNAME = un; }
 
     public void setAGE(String AGE) {
         this.AGE = AGE;
@@ -77,6 +80,10 @@ public class User {
 
     //GETTERS
     public int getTYPE() {return TYPE; }
+
+    public String getUSERNAME() {
+        return USERNAME;
+    }
 
     public String getAGE() {
         return AGE;
