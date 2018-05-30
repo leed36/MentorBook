@@ -35,7 +35,7 @@ class WelcomeActivity : AppCompatActivity() {
         //getUser
         val db = DatabaseManager(this)
         var user = db.getUser(username)
-        
+
 
         // If user exists
         if(true) {
