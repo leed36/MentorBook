@@ -14,6 +14,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "mentorBookDB";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_USER = "userTable";
+    private static final String USERNAME = "username";
     private static final String PASSWORD = "password";
     private static final String EMAIL = "email";
     private static final String AGE = "age";
@@ -43,18 +44,18 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sqlCreateUser = "create table " + TABLE_USER + "( id";
-        sqlCreateUser = sqlCreateUser + " integer autoincrement, email";
-        sqlCreateUser = sqlCreateUser + " text primary key, password,";
+        sqlCreateUser = sqlCreateUser + " integer autoincrement, username";
+        sqlCreateUser = sqlCreateUser + " text primary key, email text, password";
         sqlCreateUser = sqlCreateUser + " text, age integer, date text)";
 
-        String sqlCreateEducation = "create table eduHistTable( email";
+        String sqlCreateEducation = "create table eduHistTable( username";
         sqlCreateEducation = sqlCreateEducation + " text foreign key, school";
         sqlCreateEducation = sqlCreateEducation + " text, schoolStart text, schoolEnd";
         sqlCreateEducation = sqlCreateEducation + "text, deg_name text, ";
         sqlCreateEducation = sqlCreateEducation + "deg_type text)";
 
         String sqlCreateCourse = "create table courseTable( ";
-        sqlCreateCourse = sqlCreateCourse + "email text foreign key, classname text,";
+        sqlCreateCourse = sqlCreateCourse + "username text foreign key, classname text,";
         sqlCreateCourse = sqlCreateCourse + " yeartake integer";
 
         String sqlCreateWork = "create table careerTable( ";
@@ -80,12 +81,12 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     public void insertWithEmailAndPW(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlInsert = "INSERT INTO " + TABLE_USER + " (username, password)";
-        sqlInsert += "VALUES (" + user.getEMAIL() +", " + user.getPASSWORD() + ")";
+        sqlInsert += "VALUES (" + user.getUSERNAME() +", " + user.getPASSWORD() + ")";
         db.execSQL(sqlInsert);
         db.close();
     }
 
-    public void insertBioWithEmail(User user) { //update
+    public void insertBioWithUN(User user) { //update
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlInsert = "update" + TABLE_USER;
         sqlInsert += "set " +"a";
