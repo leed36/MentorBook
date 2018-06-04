@@ -77,32 +77,13 @@ public class ChapterFragment extends Fragment {
                         }
                     });
 
+                    /** Clear addChapter EditText   **/
+                    newChapter.setText("");
+
                     /** Add new TextView to current xml layout  **/
                     myContainer.addView(addView);
                 }
             }});
         return view;
-    }
-
-    private void getNewChapter(View view){
-        String chapter = newChapter.getText().toString();
-        String chapterNum = newChapterNum.getText().toString();
-        if(!chapter.equals("")){
-
-            TextView newTextView = new TextView(null);
-
-            myLayout = (RelativeLayout) view.findViewById(R.id.fragmentchapter);
-
-            newTextView.setLayoutParams(new RelativeLayout.LayoutParams(
-                    RelativeLayout.LayoutParams.WRAP_CONTENT,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT
-            ));
-
-            newTextView.setText(chapter);
-            myLayout.addView(newTextView);
-            Toast.makeText(getActivity(), chapter + " Success", Toast.LENGTH_LONG).show();
-
-
-        }
     }
 }

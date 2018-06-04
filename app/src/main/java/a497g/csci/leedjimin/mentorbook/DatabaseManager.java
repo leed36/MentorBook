@@ -131,7 +131,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     public User findUser(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         User user = new User();
-        Cursor cursor = db.rawQuery("select * from " + TABLE_USER +" where username = " + name, null);
+        Cursor cursor = db.rawQuery("SELECT * from " + TABLE_USER +" WHERE username = ?", new String[] {name});
         if(cursor.moveToFirst()){
             user.setUSERNAME(cursor.getString(0));
         }else{
@@ -178,12 +178,12 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         String sqlQuery = "select * from " + TABLE_USER;
         sqlQuery += " where " + USERNAME + " = " + username + "";
 
-     /*   SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(sqlQuery, null);
 
         if(cursor.moveToFirst()) {
-            user.setUSERNAME(cursor.getColumnIndex(1).toString())
-        }*/
+            user.setUSERNAME(cursor.getString(0));
+        }
 
         return user;
     }

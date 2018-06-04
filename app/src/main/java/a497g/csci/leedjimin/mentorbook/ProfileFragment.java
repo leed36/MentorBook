@@ -35,7 +35,7 @@ public class ProfileFragment extends Fragment {
         W = (EditText) rootView.findViewById(R.id.websiteInput);
         HL = (EditText) rootView.findViewById(R.id.headlineInput);
         P = (EditText) rootView.findViewById(R.id.phoneInput);
-        A = (EditText) rootView.findViewById(R.id.addressInput);
+ //       A = (EditText) rootView.findViewById(R.id.addressInput);
         Done.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

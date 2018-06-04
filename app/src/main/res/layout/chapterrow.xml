@@ -4,17 +4,28 @@
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="wrap_content">
-<Button
-    android:id="@+id/remove"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentRight="true"
-    android:text="Remove"/>
+
+    <TextView
+        android:id="@+id/chapternumber"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center_horizontal"
+        />
 <TextView
     android:id="@+id/textout"
-    android:layout_width="match_parent"
+    android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:layout_alignParentLeft="true"
-    android:textSize="18sp"
-    android:layout_toLeftOf="@id/remove"/>
+    android:textSize="20sp"
+    android:layout_toLeftOf="@id/remove"
+    />
+
+    <Button
+        android:id="@+id/remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Remove"/>
 </LinearLayout>
