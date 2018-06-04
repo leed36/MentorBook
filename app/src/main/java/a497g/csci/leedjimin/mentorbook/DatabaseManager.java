@@ -15,7 +15,6 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "mentorBookDB";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_USER = "userTable";
-    private static final String USERNAME = "username";
     private static final String PASSWORD = "password";
     private static final String EMAIL = "email";
     private static final String AGE = "age";
@@ -39,6 +38,15 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     private static final String QUARTER = "quarter";
     private static final String YEAR_TAKE = "yearTake";
 
+
+    private static final String NAME = "name";
+    private static final String USERNAME = "username";
+    private static final String WEBSITE = "website";
+    private static final String HEADLINE = "headline";
+    private static final String PHONE = "phone";
+    private static final String ADDRESS = "address";
+
+
     public DatabaseManager (Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -60,7 +68,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         sqlCreateCourse = sqlCreateCourse + " yeartake integer";
 
         String sqlCreateWork = "create table careerTable( ";
-        sqlCreateWork = sqlCreateWork + "email text foreign key, place";
+        sqlCreateWork = sqlCreateWork + "email text foreign key, place ";
         sqlCreateWork = sqlCreateWork + "text, workstart integer, ";
         sqlCreateWork = sqlCreateWork + "workend integer)";
 
@@ -139,8 +147,9 @@ public final class DatabaseManager extends SQLiteOpenHelper {
 
     public void updateProfile(String nam, String userNam, String web, String headLine, String Phone, String Address){
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
+        String profileUpdate;
     }
+
 
     public void updateBio(){
 
