@@ -5,9 +5,11 @@ import android.support.constraint.Placeholder;
 public class User {
     private int TYPE = 0; //0 for mentee; 1 for mentor
     private String USERNAME;
+    private String NAME;
     private String EMAIL;
     private String PASSWORD;
     private String AGE;
+    private String DATE;
     private String PROFILE_PHOTO;
     private String SCHOOL_START;
     private String SCHOOL_END;
@@ -19,6 +21,11 @@ public class User {
     private String DEGREE_NAME;
     private String CLASSNAME;
     private String YEAR_TAKE;
+    private String WEBSITE;
+    private String HEADLINE;
+    private String PHONE;
+    private String CURRPOSITION;
+    private String ADVICE;
 
 
     //Constructor used in MentorSignUp & MenteeSignUp kt files
@@ -44,6 +51,8 @@ public class User {
         this.AGE = AGE;
     }
 
+    public void setNAME(String NAME){ this.NAME = NAME; }
+
     public void setEMAIL(String EMAIL) {
         this.EMAIL = EMAIL;
     }
@@ -51,6 +60,8 @@ public class User {
     public void setPASSWORD(String PASSWORD) {
         this.PASSWORD = PASSWORD;
     }
+
+    public void setDATE(String DATE) { this.DATE = DATE; }
 
     public void setSCHOOL_START(String DATE_STARTED) {
         this.SCHOOL_START = DATE_STARTED;
@@ -88,12 +99,24 @@ public class User {
         this.CLASSNAME = CLASSNAME;
     }
 
+    public void setWEBSITE(String WEBSITE) { this.WEBSITE = WEBSITE; }
+
+    public void setHEADLINE(String HEADLINE) { this.HEADLINE = HEADLINE; }
+
+    public void setPHONE(String PHONE) { this.PHONE = PHONE; }
+
+    public void setCURRPOSITION(String CURRPOSITION) { this.CURRPOSITION = CURRPOSITION; }
+
+    public void setADVICE(String ADVICE) { this.ADVICE = ADVICE; }
+
     //GETTERS
     public int getTYPE() {return TYPE; }
 
     public String getUSERNAME() {
         return USERNAME;
     }
+
+    public String getNAME(){ return NAME; }
 
     public String getAGE() {
         return AGE;
@@ -106,6 +129,8 @@ public class User {
     public String getPASSWORD() {
         return PASSWORD;
     }
+
+    public String getDATE(){ return DATE; }
 
     public String getSCHOOL_START() {
         return SCHOOL_START;
@@ -141,5 +166,25 @@ public class User {
 
     public String getCLASSNAME() {
         return CLASSNAME;
+    }
+
+    public String getWEBSITE() {
+        return WEBSITE;
+    }
+
+    public String getHEADLINE() {
+        return HEADLINE;
+    }
+
+    public String getPHONE() {
+        return PHONE;
+    }
+
+    public String getCURRPOSITION() {
+        return CURRPOSITION;
+    }
+
+    public String getADVICE() {
+        return ADVICE;
     }
 }
