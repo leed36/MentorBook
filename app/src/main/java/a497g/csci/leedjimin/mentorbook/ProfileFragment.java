@@ -12,7 +12,7 @@ import android.widget.EditText;
 
 public class ProfileFragment extends Fragment {
     DatabaseManager DB;
-    User user;
+    User user = new User();
     Button Done;
     Button Cancel;
     EditText N;
