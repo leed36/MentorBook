@@ -82,9 +82,20 @@ class MentorSignUp : AppCompatActivity(){
         }
     }
 
-    private fun isUsernameValid(username:String):Boolean{
-        return true
+    private fun isUsernameValid(username: String): Boolean {
+        val db = DatabaseManager(this)
+        var check:Boolean = true
+
+        /** Check if username is unique **/
+        val checkUser:User = db.findUser(username)
+        if(!checkUser.getUSERNAME().equals("")){
+            check = false
+            Toast.makeText(this, "Username already in use, create unique username", Toast.LENGTH_LONG).show()
+        }
+
+        return check
     }
+
     fun resetSignUp(){
         mentor_email.setText("")
         mentor_username.setText("")
