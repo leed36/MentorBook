@@ -1,75 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragmentchapter">
 
-    <EditText
-        android:id="@+id/newChapter"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:hint="ADD A CHAPTER"
-        android:gravity="center"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorInputBackgroud"
-        />
-    <TextView
-        android:id="@+id/newChapterNum"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@color/colorMenteeMentorBtn"
-        android:textColor="#ffffff"
-        android:text="1"
-        android:textSize="50sp"
-        android:gravity="center" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addchap" >
+        <EditText
+            android:id="@+id/newChapter"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:hint="ADD A CHAPTER"
+            android:gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorInputBackgroud"
+            />
+        <TextView
+            android:id="@+id/newChapterNum"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@color/colorMenteeMentorBtn"
+            android:textColor="#ffffff"
+            android:text="1"
+            android:textSize="50sp"
+            android:gravity="center" />
 
-    <ImageButton
-        android:id="@+id/buttonNewChapter"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="16dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp"
-        android:src="@mipmap/ic_addchapter"
-        android:background="#00ff00"/>
-    <TextView
-        android:id="@+id/chapt1"
-        android:layout_below="@+id/buttonNewChapter"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
+        <ImageButton
+            android:id="@+id/addChapter"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:src="@mipmap/ic_addchapter"
+            android:background="#ffffff"/>
 
-        />
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/chapt2"
-        android:layout_below="@+id/chapt1"
+    <LinearLayout
+        android:layout_below="@+id/addchap"
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        />
-    <TextView
-        android:id="@+id/chapt3"
-        android:layout_below="@+id/chapt2"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        />
-    <TextView
-        android:id="@+id/chapt4"
-        android:layout_below="@+id/chapt3"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        />
-    <TextView
-        android:id="@+id/chapt5"
-        android:layout_below="@+id/chapt4"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp">
 
-
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hello world"/>
+    </LinearLayout>
 
 </RelativeLayout>

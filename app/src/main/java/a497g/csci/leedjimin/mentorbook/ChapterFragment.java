@@ -16,6 +16,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.view.ViewGroup.LayoutParams;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.app.Activity;
+import android.content.Context;
+
+
 
 public class ChapterFragment extends Fragment {
     @Nullable
@@ -24,24 +36,38 @@ public class ChapterFragment extends Fragment {
     private EditText newChapter;
     private TextView newChapterNum;
     private TextView chapt1;
+    private RelativeLayout myLayout = null;
+    private Button buttonAdd;
+    private LinearLayout myContainer;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_chapter, container, false);
+        button = (android.support.v7.widget.AppCompatImageButton)view.findViewById(R.id.addChapter);
+        myLayout = (RelativeLayout) view.findViewById(R.id.fragmentchapter);
+        myContainer = (LinearLayout) view.findViewById(R.id.container);
+        newChapter = view.findViewById(R.id.newChapter);
 
-        newChapter = (EditText) view.findViewById(R.id.newChapter);
-        newChapterNum = (TextView) view.findViewById(R.id.newChapterNum);
-        chapt1 = (TextView) view.findViewById(R.id.chapt1);
 
+        button.setOnClickListener(new OnClickListener(){
 
-        button = (android.support.v7.widget.AppCompatImageButton) view.findViewById(R.id.buttonNewChapter);
-
-        button.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view){
-                getNewChapter(view);
-            }
-        });
+            public void onClick(View arg0) {
+                LayoutInflater layoutInflater =
+                        (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final View addView = layoutInflater.inflate(R.layout.chapterrow, null);
+                TextView textOut = (TextView)addView.findViewById(R.id.textout);
+                textOut.setText(newChapter.getText().toString());
+                Button buttonRemove = (Button)addView.findViewById(R.id.remove);
+                buttonRemove.setOnClickListener(new OnClickListener(){
+
+                    @Override
+                    public void onClick(View v) {
+                        ((LinearLayout)addView.getParent()).removeView(addView);
+                    }});
+
+                myContainer.addView(addView);
+            }});
         return view;
     }
 
@@ -49,37 +75,71 @@ public class ChapterFragment extends Fragment {
         String chapter = newChapter.getText().toString();
         String chapterNum = newChapterNum.getText().toString();
         if(!chapter.equals("")){
-            /*
-                This is the building blocks of the chapter fragment
-                Here we will create new textview to add chapters to this page.
-                Very Barebones!!
 
-                In the Future:
-                    We want to add more description so that users can "view" the chapter and seek
-                    more detail.
+            TextView newTextView = new TextView(null);
 
-             */
+            myLayout = (RelativeLayout) view.findViewById(R.id.fragmentchapter);
 
+            newTextView.setLayoutParams(new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.WRAP_CONTENT,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT
+            ));
+
+            newTextView.setText(chapter);
+            myLayout.addView(newTextView);
             Toast.makeText(getActivity(), chapter + " Success", Toast.LENGTH_LONG).show();
-            chapt1.setText(chapter);
-
-            //RelativeLayout linearLayout = view.findViewById(R.id.fragmentchapter);
-
-//            /** Add textView**/
-//            TextView textView = new TextView(getActivity());
-//            textView.setId(Integer.parseInt(chapterNum));
-//            textView.setLayoutParams(
-//                    new LayoutParams(LayoutParams.MATCH_PARENT,
-//                        LayoutParams.WRAP_CONTENT));
-//            textView.setText(chapter);
-////            textView.setBackground();
-//            textView.setPadding(16,16,16,16);
-
-
-
-           // linearLayout.addView(textView);
 
 
         }
     }
 }
+
+
+//import android.os.Bundle;
+//        import android.view.LayoutInflater;
+//        import android.view.View;
+//        import android.view.View.OnClickListener;
+//        import android.widget.Button;
+//        import android.widget.EditText;
+//        import android.widget.LinearLayout;
+//        import android.widget.TextView;
+//        import android.app.Activity;
+//        import android.content.Context;
+//
+//public class MainActivity extends Activity {
+//
+//    EditText textIn;
+//    Button buttonAdd;
+//    LinearLayout container;
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
+//        textIn = (EditText)findViewById(R.id.textin);
+//        buttonAdd = (Button)findViewById(R.id.add);
+//        container = (LinearLayout)findViewById(R.id.container);
+//
+//        buttonAdd.setOnClickListener(new OnClickListener(){
+//
+//            @Override
+//            public void onClick(View arg0) {
+//                LayoutInflater layoutInflater =
+//                        (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                final View addView = layoutInflater.inflate(R.layout.row, null);
+//                TextView textOut = (TextView)addView.findViewById(R.id.textout);
+//                textOut.setText(textIn.getText().toString());
+//                Button buttonRemove = (Button)addView.findViewById(R.id.remove);
+//                buttonRemove.setOnClickListener(new OnClickListener(){
+//
+//                    @Override
+//                    public void onClick(View v) {
+//                        ((LinearLayout)addView.getParent()).removeView(addView);
+//                    }});
+//
+//                container.addView(addView);
+//            }});
+//
+//    }
+//
+//}

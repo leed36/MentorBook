@@ -26,18 +26,27 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     private static final String SCHOOL_STARTED = "schoolStart";
     private static final String SCHOOL_END = "schoolEnd";
 
-    private static final String CAREER_TABLE = "careerTable";
-    private static final String CURRENT_POSITION = "currentPosition";
-    private static final String START_WORK_YR = "workStart";
-    private static final String END_WORK_YR = "workEnd";
-    private static final String SCHOOL = "school";
-    private static final String DEGREE_TYPE = "deg_type";
-    private static final String DEGREE_NAME = "deg_name";
+//    private static final String CAREER_TABLE = "careerTable";
+//    private static final String CURRENT_POSITION = "currentPosition";
+//    private static final String START_WORK_YR = "workStart";
+//    private static final String END_WORK_YR = "workEnd";
+//    private static final String SCHOOL = "school";
+
+//    private static final String DEGREE_TYPE = "deg_type";
+//    private static final String DEGREE_NAME = "deg_name";
 
     private static final String COURSE_TABLE = "courseTable";
     private static final String CLASSNAME = "className";
     private static final String QUARTER = "quarter";
     private static final String YEAR_TAKE = "yearTake";
+
+    private static final String SCHOLARSHIP_TABLE = "scholarshipTable";
+    private static final String DEGREE_TABLE = "degreeTable";
+
+    private static final String TAG_TABLE = "tagTable";
+    private static final String CHAPTER_TABLE = "chapterTable";
+
+
 
     public DatabaseManager (Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -45,28 +54,60 @@ public final class DatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sqlCreateUser = "create table " + TABLE_USER + "( username" ;
-        sqlCreateUser = sqlCreateUser + " text primary key, email text, password";
-        sqlCreateUser = sqlCreateUser + " text, age integer, date text)";
 
-        String sqlCreateEducation = "create table eduHistTable( username";
+        /** User Table query    **/
+        String sqlCreateUser = "create table " + TABLE_USER + "( username" ;
+        sqlCreateUser = sqlCreateUser + " text primary key, password";
+        sqlCreateUser = sqlCreateUser + " text, age integer, date text, email";
+        sqlCreateUser = sqlCreateUser + " text, name text, website text, headline ";
+        sqlCreateUser = sqlCreateUser + " text, phone text, currentposition text, advice";
+        sqlCreateUser = sqlCreateUser + " text)";
+
+
+
+        /** Education table query   **/
+        String sqlCreateEducation = "create table " + EDUCATION_TABLE + "( username";
         sqlCreateEducation = sqlCreateEducation + " text foreign key, school";
         sqlCreateEducation = sqlCreateEducation + " text, schoolStart text, schoolEnd";
-        sqlCreateEducation = sqlCreateEducation + "text, deg_name text, ";
-        sqlCreateEducation = sqlCreateEducation + "deg_type text)";
 
-        String sqlCreateCourse = "create table courseTable( ";
+        /** Course table query  **/
+        String sqlCreateCourse = "create table " + COURSE_TABLE + " ( ";
         sqlCreateCourse = sqlCreateCourse + "username text foreign key, classname text,";
         sqlCreateCourse = sqlCreateCourse + " yeartake integer";
 
-        String sqlCreateWork = "create table careerTable( ";
-        sqlCreateWork = sqlCreateWork + "email text foreign key, place";
-        sqlCreateWork = sqlCreateWork + "text, workstart integer, ";
-        sqlCreateWork = sqlCreateWork + "workend integer)";
+        /** Scholarship table query **/
+        String sqlCreateScholarship = "create table " + SCHOLARSHIP_TABLE + "( ";
+        sqlCreateScholarship = sqlCreateScholarship + "username foreign key, scholarship text";
+
+        /** Degree Table query **/
+        String sqlCreateDegree = "create table" + DEGREE_TABLE + "( ";
+        sqlCreateDegree = sqlCreateDegree + "username text foreign key, degreename text";
+
+        /** Tags table query    **/
+        String sqlCreateTags = "create table " + TAG_TABLE + "(";
+        sqlCreateTags = sqlCreateTags + "username text foreign key, tag text";
+
+        /** Chapter table query **/
+        String sqlCreateChapter = "create table " + CHAPTER_TABLE + "(";
+        sqlCreateChapter = sqlCreateChapter + "username text foreign key, chapter text";
+
+
+//        String sqlCreateWork = "create table careerTable( ";
+//        sqlCreateWork = sqlCreateWork + "email text foreign key, place";
+//        sqlCreateWork = sqlCreateWork + "text, workstart integer, ";
+//        sqlCreateWork = sqlCreateWork + "workend integer)";
 
         db.execSQL(sqlCreateUser);
-//        db.execSQL(sqlCreateEducation);
-//        db.execSQL(sqlCreateCourse);
+        db.execSQL(sqlCreateEducation);
+        db.execSQL(sqlCreateCourse);
+        db.execSQL(sqlCreateScholarship);
+        db.execSQL(sqlCreateDegree);
+        db.execSQL(sqlCreateTags);
+        db.execSQL(sqlCreateChapter);
+
+
+
+
 //        db.execSQL(sqlCreateWork);
     }
 
@@ -75,7 +116,13 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS " + EDUCATION_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + COURSE_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + CAREER_TABLE);
+        //db.execSQL("DROP TABLE IF EXISTS " + CAREER_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + CHAPTER_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + SCHOLARSHIP_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + DEGREE_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + TAG_TABLE);
+
+
         onCreate(db);
     }
 

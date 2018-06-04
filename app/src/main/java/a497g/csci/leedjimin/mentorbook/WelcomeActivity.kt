@@ -38,7 +38,7 @@ class WelcomeActivity : AppCompatActivity() {
 
 
         // If user exists
-        if(check/* && password.equals(user.getPASSWORD())*/) {
+        if(true/*check && password.equals(user.getPASSWORD())*/) {
             val insertIntent = Intent(this, MainActivity::class.java)
             this.startActivity(insertIntent)
         }
