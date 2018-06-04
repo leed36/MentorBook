@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 public class ProfileFragment extends Fragment {
     DatabaseManager DB;
+    User user = new User();
     Button Done;
     Button Cancel;
     EditText N;
@@ -20,10 +21,12 @@ public class ProfileFragment extends Fragment {
     EditText HL;
     EditText P;
     EditText A;
+    String userNam;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+        userNam = user.getUSERNAME();
         DB = new DatabaseManager(getActivity());
         Done = (Button) rootView.findViewById(R.id.doneButton);
         Cancel = (Button) rootView.findViewById(R.id.cancelButton);
@@ -32,17 +35,14 @@ public class ProfileFragment extends Fragment {
         W = (EditText) rootView.findViewById(R.id.websiteInput);
         HL = (EditText) rootView.findViewById(R.id.headlineInput);
         P = (EditText) rootView.findViewById(R.id.phoneInput);
-       // A = (EditText) rootView.findViewById(R.id.addressInput);
-        addData();
-        return rootView;
-    }
-
-    public void addData(){
+        A = (EditText) rootView.findViewById(R.id.addressInput);
         Done.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //add datas...
+                DB.updateProfile(N.toString(), UN.toString(), W.toString(), HL.toString(), P.toString(), A.toString());
             }
         });
+        return rootView;
     }
+
 }
