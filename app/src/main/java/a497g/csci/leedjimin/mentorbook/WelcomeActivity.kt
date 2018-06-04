@@ -38,11 +38,12 @@ class WelcomeActivity : AppCompatActivity() {
 
 
         // If user exists
-        if(true) {
+        if(check/* && password.equals(user.getPASSWORD())*/) {
             val insertIntent = Intent(this, MainActivity::class.java)
             this.startActivity(insertIntent)
         }
         else{
+            Toast.makeText(this, "Invalid Login, please try again", Toast.LENGTH_LONG).show()
             resetLogin()
         }
 
