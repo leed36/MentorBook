@@ -33,9 +33,9 @@ public class SearchActivity extends AppCompatActivity {
         String word = searchEdit.getText( ).toString( );
         ArrayList<User> users = dbManager.search(word);
         if (!users.isEmpty()) {
-            String name = users.get(0).getEMAIL();
+//            String name = users.get(0).getEMAIL();
             for (User user : users) {
-//                listing += "\n-" + user.getInfo();
+                listView
             }
 //            Toast.makeText(SearchActivity.this, listing, Toast.LENGTH_LONG).show();
         } else {

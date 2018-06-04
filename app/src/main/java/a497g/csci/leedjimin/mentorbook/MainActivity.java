@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.nav_chapter:
                             selectedFragment = new ChapterFragment();
                             break;
+                        case R.id.nav_home:
+                            selectedFragment = new ChapterFragment();
+                            break;
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
