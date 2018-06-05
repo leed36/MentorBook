@@ -40,6 +40,7 @@ class WelcomeActivity : AppCompatActivity() {
         // If user exists
         if(true/*check && password.equals(user.getPASSWORD())*/) {
             val insertIntent = Intent(this, MainActivity::class.java)
+            insertIntent.putExtra("Username", user.username)
             this.startActivity(insertIntent)
         }
         else{

@@ -14,11 +14,18 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     private static final String ID = "id";
     private static final String DATABASE_NAME = "mentorBookDB";
     private static final int DATABASE_VERSION = 1;
+
     private static final String TABLE_USER = "userTable";
     private static final String PASSWORD = "password";
     private static final String EMAIL = "email";
     private static final String AGE = "age";
     private static final String PROFILE_PHOTO = "profilePhoto";
+    private static final String NAME = "name";
+    private static final String USERNAME = "username";
+    private static final String WEBSITE = "website";
+    private static final String HEADLINE = "headline";
+    private static final String PHONE = "phone";
+    private static final String ADDRESS = "address";
 
     private static final String EDUCATION_TABLE = "eduHistTable";
     private static final String PLACE = "place";
@@ -39,19 +46,10 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     private static final String YEAR_TAKE = "yearTake";
 
 
-    private static final String NAME = "name";
-    private static final String USERNAME = "username";
-    private static final String WEBSITE = "website";
-    private static final String HEADLINE = "headline";
-    private static final String PHONE = "phone";
-    private static final String ADDRESS = "address";
-
-
     private static final String SCHOLARSHIP_TABLE = "scholarshipTable";
     private static final String DEGREE_TABLE = "degreeTable";
     private static final String TAG_TABLE = "tagTable";
     private static final String CHAPTER_TABLE = "chapterTable";
-
 
 
     public DatabaseManager (Context context) {
@@ -67,8 +65,6 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         sqlCreateUser = sqlCreateUser + " text, age integer, date text, name";
         sqlCreateUser = sqlCreateUser + " text, website text, headline text, phone";
         sqlCreateUser = sqlCreateUser + " text, currentposition text, advice text)";
-
-
 
 
         /** Education table query   **/
@@ -103,7 +99,9 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         String sqlCreateTags = "create table " + TAG_TABLE + "(username";
         sqlCreateTags = sqlCreateTags + " text foreign key, tag text";
 
-
+        //FAKE ACCOUNTS
+        db.execSQL("insert into " + TABLE_USER + " (username, email, password, age, date, name, " +
+                "website, headline, phone) Values (John12, john@email.com, abc123, 22, 06/04/2018, John Doe, John.com, null, 12345)");
 
         db.execSQL(sqlCreateUser);
         db.execSQL(sqlCreateEducation);
@@ -121,6 +119,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + EDUCATION_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + COURSE_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + CAREER_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + SCHOLARSHIP_TABLE);
         onCreate(db);
     }
 
