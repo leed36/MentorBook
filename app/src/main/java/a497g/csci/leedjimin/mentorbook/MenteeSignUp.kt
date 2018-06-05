@@ -12,7 +12,6 @@ import android.text.TextUtils
 import android.content.Intent
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_mentee_signup.*
-import kotlinx.android.synthetic.main.activity_mentor_signup.*
 
 
 /**
@@ -35,7 +34,7 @@ class MenteeSignUp : AppCompatActivity() {
     private fun attemptSignUp(){
         var check: Boolean = true
         val username:String = mentee_username.text.toString()
-        val email:String = mentee_username.text.toString()
+        val email:String = mentee_email.text.toString()
         val password:String = mentee_pass.text.toString()
         val password2:String = mentee_pass2.text.toString()
 
@@ -54,7 +53,7 @@ class MenteeSignUp : AppCompatActivity() {
 
         if(!isUsernameValid(username)){
             Toast.makeText(this, "Invalid Username, please try again", Toast.LENGTH_LONG).show()
-
+            check = false
         }
 
 
@@ -101,10 +100,10 @@ class MenteeSignUp : AppCompatActivity() {
     }
 
     fun resetSignUp(){
-        mentor_email.setText("")
-        mentor_username.setText("")
-        mentor_pass2.setText("")
-        mentor_pass.setText("")
+        mentee_email.setText("")
+        mentee_username.setText("")
+        mentee_pass2.setText("")
+        mentee_pass.setText("")
 
     }
 
