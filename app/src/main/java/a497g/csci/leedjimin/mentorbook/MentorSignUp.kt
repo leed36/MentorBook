@@ -21,18 +21,17 @@ class MentorSignUp : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mentor_signup)
+        // Set up the sign in form, get variables
+        mentor_signup_button.setOnClickListener{attemptSignUp()}
 
+    }
+
+    private fun attemptSignUp(){
+        var check: Boolean = true
         val username:String = mentor_username.text.toString()
         val email:String = mentor_email.text.toString()
         val password:String = mentor_pass.text.toString()
         val password2:String = mentor_pass2.text.toString()
-        // Set up the sign in form, get variables
-        mentor_signup_button.setOnClickListener{attemptSignUp(username, email, password,password2)}
-
-    }
-
-    private fun attemptSignUp(username: String,email:String, password:String, password2:String){
-        var check: Boolean = true
 
         /** Check password authenticity **/
         if(!TextUtils.isEmpty(password) && !isPasswordValid(password)){
@@ -54,12 +53,12 @@ class MentorSignUp : AppCompatActivity(){
 
 
         /** Check for a valid email address **/
-        if (!TextUtils.isEmpty(username)) {
-            Toast.makeText(this, "Please enter email, try again", Toast.LENGTH_LONG).show()
+        if (TextUtils.isEmpty(username)) {
+            Toast.makeText(this, "Please enter username, try again", Toast.LENGTH_LONG).show()
 
             check = false
         }
-        if (isEmailValid(email)) {
+        if (!isEmailValid(email)) {
             Toast.makeText(this, "Please enter valid email, try again", Toast.LENGTH_LONG).show()
             check = false
         }
@@ -71,11 +70,10 @@ class MentorSignUp : AppCompatActivity(){
             /*
              *  Registration is complete, save info in database and go to main activity
              */
-            Toast.makeText(this, "Login Sucessful", Toast.LENGTH_LONG).show()
-
             val user = User(username, email, password, 1)
             val db = DatabaseManager(this)
             db.insertWithEmailAndPW(user)
+            Toast.makeText(this, "Login Sucessful for " + user.getUSERNAME() + ", "+ user.getEMAIL() + ", "+ user.getPASSWORD() , Toast.LENGTH_LONG).show()
 
             val insertIntent = Intent(this, MainActivity::class.java)
             this.startActivity(insertIntent)
@@ -87,7 +85,7 @@ class MentorSignUp : AppCompatActivity(){
         var check:Boolean = true
 
         /** Check if username is unique **/
-        val checkUser:User = db.findUser(username)
+        val checkUser:User = db.findUserBasic(username)
         if(!checkUser.getUSERNAME().equals("")){
             check = false
             Toast.makeText(this, "Username already in use, create unique username", Toast.LENGTH_LONG).show()

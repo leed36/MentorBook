@@ -15,7 +15,9 @@
             android:layout_height="wrap_content"
             android:text="ADD A CHAPTER"
             android:gravity="center_horizontal"
-            android:textColor="#a7a7a7"
+            android:layout_marginTop="8dp"
+            android:textColor="#00a1b8"
+            android:textStyle="bold"
             android:textSize="28sp"/>
         <EditText
             android:id="@+id/newChapter"
@@ -58,6 +60,7 @@
         android:layout_height="wrap_content"
         android:text="Your Chapters"
         android:textSize="24sp"
+        android:layout_marginTop="16dp"
         android:layout_below="@+id/addchap"/>
 
     <LinearLayout
