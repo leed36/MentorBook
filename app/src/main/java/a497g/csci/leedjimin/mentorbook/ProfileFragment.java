@@ -27,7 +27,6 @@ public class ProfileFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         userNam = user.getUSERNAME();
         DB = new DatabaseManager(getActivity());
-        DB.findUser(userNam);
         Done = (Button) rootView.findViewById(R.id.doneButton);
         Cancel = (Button) rootView.findViewById(R.id.cancelButton);
         N = (EditText) rootView.findViewById(R.id.nameInput);
@@ -47,6 +46,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v){
                 DB.updateProfile(N.toString(), UN.toString(), W.toString(), HL.toString(), P.toString());
+                DB.findUser(userNam);
             }
         });
         return rootView;

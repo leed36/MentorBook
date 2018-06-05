@@ -7,14 +7,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.content.Intent;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 //
-//    String username = getIntent().getStringExtra("Username")
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.nav_chapter:
                             selectedFragment = new ChapterFragment();
                             break;
-                        case R.id.nav_home:
-                            selectedFragment = new HomeFragment();
-                            break;
+//                        case R.id.nav_home:
+//                            selectedFragment = new ChapterFragment();
+//                            break;
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -58,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

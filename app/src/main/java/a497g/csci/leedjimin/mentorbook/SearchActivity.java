@@ -35,7 +35,7 @@ public class SearchActivity extends AppCompatActivity {
         if (!users.isEmpty()) {
 //            String name = users.get(0).getEMAIL();
             for (User user : users) {
-//                listView;
+                //listView;
             }
 //            Toast.makeText(SearchActivity.this, listing, Toast.LENGTH_LONG).show();
         } else {
