@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -142,12 +143,12 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             user.setPASSWORD(cursor.getString(2));
             user.setAGE(cursor.getString(3));
             user.setDATE(cursor.getString(4));
-            user.setNAME(cursor.getString(5));
+       /*     user.setNAME(cursor.getString(5));
             user.setWEBSITE(cursor.getString(6));
             user.setHEADLINE(cursor.getString(7));
             user.setPHONE(cursor.getString(8));
             user.setCURRPOSITION(cursor.getString(9));
-            user.setADVICE(cursor.getString(10));
+            user.setADVICE(cursor.getString(10));*/
         }else{
             user.setUSERNAME("");
             user.setEMAIL("");
@@ -174,11 +175,9 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(USERNAME,user.getUSERNAME());
         values.put(EMAIL, user.getEMAIL());
-        values.put(PASSWORD, user.getEMAIL());
-         db.insert(TABLE_USER,null,values);
-//        String sqlInsert = "INSERT INTO " + TABLE_USER + " (username, password)";
-//        sqlInsert += "VALUES (" + user.getUSERNAME() +", " + user.getPASSWORD() + ")";
-//        db.execSQL(sqlInsert);
+        values.put(PASSWORD, user.getPASSWORD());
+        db.insert(TABLE_USER,null,values);
+
         db.close();
     }
 
