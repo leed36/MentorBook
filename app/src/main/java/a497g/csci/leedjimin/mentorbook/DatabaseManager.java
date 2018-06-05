@@ -151,7 +151,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         values.put(USERNAME,user.getUSERNAME());
         values.put(EMAIL, user.getEMAIL());
         values.put(PASSWORD, user.getEMAIL());
-        db.insert(TABLE_USER,null,values);
+         db.insert(TABLE_USER,null,values);
 //        String sqlInsert = "INSERT INTO " + TABLE_USER + " (username, password)";
 //        sqlInsert += "VALUES (" + user.getUSERNAME() +", " + user.getPASSWORD() + ")";
 //        db.execSQL(sqlInsert);
@@ -186,6 +186,26 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         }
 
         return user;
+    }
+
+    /** Created by Trevor Glass
+     * Currently used for testing purposes to see if users can be retreieved from table
+     * @return
+     */
+    public ArrayList<User> getAllUsers(){
+        String sqlQuery = "select * from " + TABLE_USER;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+        ArrayList<User> users = new ArrayList<User>();
+
+        while(cursor.moveToNext()){
+            User user = new User();
+            user.setUSERNAME(cursor.getString(0));
+            users.add(user);
+        }
+
+        return users;
+
     }
     public ArrayList<User> search(String word) { //FIX THIS
         String sqlQuery = "select * from " + TABLE_USER;
