@@ -129,9 +129,15 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    /** Created by Trevor Glass
+    public void dropTable(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+
+    }
+
+    /** Created by Sam Baek
      *
-     *  Used for Username Validation in MentorSignUp and MenteeSignUp
+     *
      */
     public User findUser(String name){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -143,12 +149,12 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             user.setPASSWORD(cursor.getString(2));
             user.setAGE(cursor.getString(3));
             user.setDATE(cursor.getString(4));
-       /*     user.setNAME(cursor.getString(5));
+            user.setNAME(cursor.getString(5));
             user.setWEBSITE(cursor.getString(6));
             user.setHEADLINE(cursor.getString(7));
             user.setPHONE(cursor.getString(8));
             user.setCURRPOSITION(cursor.getString(9));
-            user.setADVICE(cursor.getString(10));*/
+            user.setADVICE(cursor.getString(10));
         }else{
             user.setUSERNAME("");
             user.setEMAIL("");
@@ -161,6 +167,27 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             user.setPHONE("");
             user.setCURRPOSITION("");
             user.setADVICE("");
+        }
+
+        return user;
+    }
+
+    /** Created by Trevor Glass
+     *
+     *
+     */
+    public User findUserBasic(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        User user = new User();
+        Cursor cursor = db.rawQuery("SELECT * from " + TABLE_USER +" WHERE username = ?", new String[] {name});
+        if(cursor.moveToFirst()){
+            user.setUSERNAME(cursor.getString(0));
+            user.setEMAIL(cursor.getString(1));
+            user.setPASSWORD(cursor.getString(2));
+        }else{
+            user.setUSERNAME("");
+            user.setEMAIL("");
+            user.setPASSWORD("");
         }
 
         return user;

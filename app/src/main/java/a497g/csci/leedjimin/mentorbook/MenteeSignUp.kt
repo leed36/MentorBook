@@ -90,7 +90,7 @@ class MenteeSignUp : AppCompatActivity() {
         var check:Boolean = true
 
         /** Check if username is unique **/
-        val checkUser:User = db.findUser(username)
+        val checkUser:User = db.findUserBasic(username)
         if(!checkUser.getUSERNAME().equals("")){
             check = false
             Toast.makeText(this, "Username already in use, create unique username", Toast.LENGTH_LONG).show()

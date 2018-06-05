@@ -4,28 +4,28 @@ import android.support.constraint.Placeholder;
 
 public class User {
     private int TYPE = 0; //0 for mentee; 1 for mentor
-    private String USERNAME;
-    private String NAME;
-    private String EMAIL;
-    private String PASSWORD;
-    private String AGE;
-    private String DATE;
+    private String USERNAME = "";
+    private String NAME = "";
+    private String EMAIL = "";
+    private String PASSWORD = "";
+    private String AGE = "";
+    private String DATE = "";
     private String PROFILE_PHOTO;
-    private String SCHOOL_START;
-    private String SCHOOL_END;
-    private String PLACE;
-    private String START_WORK_YR;
-    private String END_WORK_YR;
-    private String SCHOOL;
-    private String DEGREE_TYPE;
-    private String DEGREE_NAME;
-    private String CLASSNAME;
-    private String YEAR_TAKE;
-    private String WEBSITE;
-    private String HEADLINE;
-    private String PHONE;
-    private String CURRPOSITION;
-    private String ADVICE;
+    private String SCHOOL_START = "";
+    private String SCHOOL_END = "";
+    private String PLACE = "";
+    private String START_WORK_YR = "";
+    private String END_WORK_YR = "";
+    private String SCHOOL = "";
+    private String DEGREE_TYPE = "";
+    private String DEGREE_NAME = "";
+    private String CLASSNAME = "";
+    private String YEAR_TAKE = "";
+    private String WEBSITE = "";
+    private String HEADLINE = "";
+    private String PHONE = "";
+    private String CURRPOSITION = "";
+    private String ADVICE = "";
 
 
     //Constructor used in MentorSignUp & MenteeSignUp kt files
