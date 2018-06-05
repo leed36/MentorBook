@@ -20,7 +20,6 @@ public class ProfileFragment extends Fragment {
     EditText W;
     EditText HL;
     EditText P;
-    EditText A;
     String userNam;
     @Nullable
     @Override
@@ -28,6 +27,7 @@ public class ProfileFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         userNam = user.getUSERNAME();
         DB = new DatabaseManager(getActivity());
+        DB.findUser(userNam);
         Done = (Button) rootView.findViewById(R.id.doneButton);
         Cancel = (Button) rootView.findViewById(R.id.cancelButton);
         N = (EditText) rootView.findViewById(R.id.nameInput);
@@ -35,11 +35,18 @@ public class ProfileFragment extends Fragment {
         W = (EditText) rootView.findViewById(R.id.websiteInput);
         HL = (EditText) rootView.findViewById(R.id.headlineInput);
         P = (EditText) rootView.findViewById(R.id.phoneInput);
-        A = (EditText) rootView.findViewById(R.id.emailInput);
+
+        N.setText(user.getNAME());
+        UN.setText(user.getUSERNAME());
+        W.setText(user.getWEBSITE());
+        HL.setText(user.getHEADLINE());
+        P.setText(user.getPHONE());
+
+
         Done.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                DB.updateProfile(N.toString(), UN.toString(), W.toString(), HL.toString(), P.toString(), A.toString());
+                DB.updateProfile(N.toString(), UN.toString(), W.toString(), HL.toString(), P.toString());
             }
         });
         return rootView;

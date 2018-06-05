@@ -51,18 +51,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/imageP"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
         android:text="NAME"
         android:textSize="20sp"/>
     <EditText
         android:id="@+id/nameInput"
         android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/textNam"
         android:layout_below="@id/imageP"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:inputType="text"/>
@@ -73,18 +72,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textNam"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
         android:text="USERNAME"
         android:textSize="20sp"/>
     <EditText
         android:id="@+id/userInput"
         android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@id/textUser"
         android:layout_below="@id/nameInput"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="6dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:inputType="text"/>
@@ -95,18 +93,17 @@
     android:layout_height="wrap_content"
     android:layout_below="@id/textUser"
     android:layout_alignParentLeft="true"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="15dp"
     android:layout_marginLeft="10dp"
     android:text="WEBSITE"
     android:textSize="20sp"/>
     <EditText
         android:id="@+id/websiteInput"
         android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@id/textWebsite"
         android:layout_below="@id/userInput"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="6dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:inputType="text"/>
@@ -117,18 +114,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textWebsite"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
         android:text="HEADLINE"
         android:textSize="20sp"/>
     <EditText
         android:id="@+id/headlineInput"
         android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@id/textHeadline"
         android:layout_below="@id/websiteInput"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="6dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:inputType="text"/>
@@ -159,42 +155,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textTitle2"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
         android:text="PHONE"
         android:textSize="20sp"/>
     <EditText
         android:id="@+id/phoneInput"
         android:layout_width="250dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@id/textPhone"
         android:layout_below="@id/textTitle2"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="6dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="20dp"
         android:inputType="text"/>
 
-    <TextView
-        android:id="@+id/textEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textTitle2"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="38dp"
-        android:layout_marginLeft="10dp"
-        android:text="ADDRESS"
-        android:textSize="20sp"/>
-    <EditText
-        android:id="@+id/emailInput"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_toRightOf="@id/textEmail"
-        android:layout_below="@id/textTitle2"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="38dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="20dp"
-        android:inputType="text"/>
 
 </RelativeLayout>
