@@ -74,9 +74,9 @@ public final class DatabaseManager extends SQLiteOpenHelper {
 
 
         /** Education table query   **/
-        String sqlCreateEducation = "create table " +  EDUCATION_TABLE + "( username";
+        String sqlCreateEducation = "create table " +  EDUCATION_TABLE + "(username";
         sqlCreateEducation = sqlCreateEducation + " text foreign key, school";
-        sqlCreateEducation = sqlCreateEducation + " text, schoolStart text, schoolEnd)";
+        sqlCreateEducation = sqlCreateEducation + " text, schoolStart text, schoolEnd text)";
 
 
         /** Course Table query  **/
@@ -105,10 +105,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         String sqlCreateTags = "create table " + TAG_TABLE + "(username";
         sqlCreateTags = sqlCreateTags + " text foreign key, tag text";
 
-        //fake acount
-        db.execSQL("insert into " + TABLE_USER + " (username, email, password, age, date, name, website, " +
-                "headline, phone, currentposition, advice) values(John123, johnatemail.com, john123, 22, 06/04/2018, John, " +
-                "john.com, here, 1234567889, SWEng, 'work hard')");
+
 
         db.execSQL(sqlCreateUser);
         db.execSQL(sqlCreateEducation);
@@ -118,6 +115,11 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.execSQL(sqlCreateDegree);
         db.execSQL(sqlCreateTags);
 //        db.execSQL(sqlCreateWork);
+
+        //fake acount
+        db.execSQL("insert into " + TABLE_USER + "(username, email, password, age, date, name, website, " +
+                "headline, phone, currentposition, advice) values(John123, john@email.com, john123, 22, 06/04/2018, John, " +
+                "john.com, here, 1234567889, SWEng, 'work hard')");
     }
 
     @Override
