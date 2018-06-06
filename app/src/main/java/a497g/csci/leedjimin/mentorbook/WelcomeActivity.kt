@@ -38,7 +38,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         //getUser
         val db = DatabaseManager(this)
-        var user = db.findUserBasic(username);
+        var user = db.findUserBasic(username)
 
         if(user.getUSERNAME().equals("")){
             check = false

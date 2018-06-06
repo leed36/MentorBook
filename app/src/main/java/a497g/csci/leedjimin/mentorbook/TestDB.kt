@@ -1,5 +1,7 @@
 package a497g.csci.leedjimin.mentorbook
 
+import a497g.csci.leedjimin.mentorbook.R.id.test
+import a497g.csci.leedjimin.mentorbook.R.id.test8
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
