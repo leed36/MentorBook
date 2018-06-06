@@ -62,7 +62,7 @@ public class ChapterFragment extends Fragment {
                     String username = "username";
                     DB = new DatabaseManager(getActivity());
                     DB.insertChapter(username,chapter );
-                    
+
                     /** Add chapter to chapter fragment**/
                     LayoutInflater layoutInflater =
                             (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
