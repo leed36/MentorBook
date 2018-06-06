@@ -14,6 +14,10 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 //
 //    String username = getIntent().getStringExtra("Username")
+    Fragment PF = new ProfileFragment();
+    Fragment HF = new HomeFragment();
+    Fragment CF = new ChapterFragment();
+    Fragment BF = new BioFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,20 +33,20 @@ public class MainActivity extends AppCompatActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
+                    Fragment selectedFragment = HF;
 
                     switch(item.getItemId()){
                         case R.id.nav_profile:
-                            selectedFragment = new ProfileFragment();
+                            selectedFragment = PF;
                             break;
                         case R.id.nav_bio:
-                            selectedFragment = new BioFragment();
+                            selectedFragment = BF;
                             break;
                         case R.id.nav_chapter:
-                            selectedFragment = new ChapterFragment();
+                            selectedFragment = CF;
                             break;
                         case R.id.nav_home:
-                            selectedFragment = new HomeFragment();
+                            selectedFragment = HF;
                             break;
                     }
 

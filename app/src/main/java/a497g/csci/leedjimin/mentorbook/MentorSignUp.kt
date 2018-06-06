@@ -70,7 +70,7 @@ class MentorSignUp : AppCompatActivity(){
             /*
              *  Registration is complete, save info in database and go to main activity
              */
-            val user = User(username, email, password, 1)
+            val user = User(username, email, password, "mentor")
             val db = DatabaseManager(this)
             db.insertWithEmailAndPW(user)
             Toast.makeText(this, "Login Sucessful for " + user.getUSERNAME() + ", "+ user.getEMAIL() + ", "+ user.getPASSWORD() , Toast.LENGTH_LONG).show()

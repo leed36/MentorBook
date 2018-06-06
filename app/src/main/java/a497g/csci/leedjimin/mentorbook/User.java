@@ -3,7 +3,7 @@ package a497g.csci.leedjimin.mentorbook;
 import android.support.constraint.Placeholder;
 
 public class User {
-    private int TYPE = 0; //0 for mentee; 1 for mentor
+    private String TYPE = "";
     private String USERNAME = "";
     private String NAME = "";
     private String EMAIL = "";
@@ -33,7 +33,7 @@ public class User {
 
     }
 
-    public User(String username, String email, String password, int type) {
+    public User(String username, String email, String password, String type) {
         this.USERNAME = username;
         this.EMAIL = email;
         this.PASSWORD = password;
@@ -41,8 +41,8 @@ public class User {
     }
 
     //SETTERS
-    public void setTYPE(int i) {
-        this.TYPE = i;
+    public void setTYPE(String ty) {
+        this.TYPE = ty;
     }
 
     public void setUSERNAME(String un) { this.USERNAME = un; }
@@ -110,7 +110,7 @@ public class User {
     public void setADVICE(String ADVICE) { this.ADVICE = ADVICE; }
 
     //GETTERS
-    public int getTYPE() {return TYPE; }
+    public String getTYPE() {return TYPE; }
 
     public String getUSERNAME() {
         return USERNAME;
