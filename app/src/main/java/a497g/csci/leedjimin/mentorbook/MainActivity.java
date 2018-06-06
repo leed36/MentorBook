@@ -7,13 +7,18 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 //
+//    String username = getIntent().getStringExtra("Username")
+    Fragment PF = new ProfileFragment();
+    Fragment HF = new HomeFragment();
+    Fragment CF = new ChapterFragment();
+    Fragment BF = new BioFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,21 +33,21 @@ public class MainActivity extends AppCompatActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
+                    Fragment selectedFragment = HF;
 
                     switch(item.getItemId()){
                         case R.id.nav_profile:
-                            selectedFragment = new ProfileFragment();
+                            selectedFragment = PF;
                             break;
                         case R.id.nav_bio:
-                            selectedFragment = new BioFragment();
+                            selectedFragment = BF;
                             break;
                         case R.id.nav_chapter:
-                            selectedFragment = new ChapterFragment();
+                            selectedFragment = CF;
                             break;
-//                        case R.id.nav_home:
-//                            selectedFragment = new ChapterFragment();
-//                            break;
+                        case R.id.nav_home:
+                            selectedFragment = HF;
+                            break;
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -57,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -51,7 +51,6 @@
             android:layout_marginRight="16dp"
             android:src="@mipmap/ic_addchapter"
             />
-
     </RelativeLayout>
 
     <TextView
@@ -62,15 +61,17 @@
         android:textSize="24sp"
         android:layout_marginTop="16dp"
         android:layout_below="@+id/addchap"/>
-
-    <LinearLayout
-        android:layout_below="@+id/yourchapter"
-        android:id="@+id/container"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp">
-
-    </LinearLayout>
-
+        android:layout_below="@+id/yourchapter"
+        >
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
