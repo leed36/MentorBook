@@ -12,9 +12,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class MainActivity extends AppCompatActivity implements Serializable {
 //
-    String username = getIntent().getStringExtra("Username");
+    static String username;
     Fragment PF = new ProfileFragment();
     Fragment HF = new HomeFragment();
     Fragment CF = new ChapterFragment();
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, //preset initial fragment
                 HF).commit();
+
+        username = (String)this.getIntent().getSerializableExtra("Username"); //gets username
 
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
