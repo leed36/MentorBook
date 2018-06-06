@@ -15,6 +15,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     private static final String ID = "id";
     private static final String DATABASE_NAME = "mentorBookDB";
     private static final int DATABASE_VERSION = 1;
+    private static final String TYPE = "type";
     private static final String TABLE_USER = "userTable";
     private static final String PASSWORD = "password";
     private static final String EMAIL = "email";
@@ -66,7 +67,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         /** User table query    **/
         String sqlCreateUser = "create table " + TABLE_USER + "(username" ;
         sqlCreateUser = sqlCreateUser + " text primary key, email text, password";
-        sqlCreateUser = sqlCreateUser + " text, age text, date text, name";
+        sqlCreateUser = sqlCreateUser + " text, type text, age text, date text, name";
         sqlCreateUser = sqlCreateUser + " text, website text, headline text, phone";
         sqlCreateUser = sqlCreateUser + " text, currentposition text, advice text)";
 
@@ -76,7 +77,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         /** Education table query   **/
         String sqlCreateEducation = "create table " +  EDUCATION_TABLE + "( username";
         sqlCreateEducation = sqlCreateEducation + " text foreign key, school";
-        sqlCreateEducation = sqlCreateEducation + " text, schoolStart text, schoolEnd text)";
+        sqlCreateEducation = sqlCreateEducation + " text, schoolStart text, schoolEnd)";
 
 
         /** Course Table query  **/
@@ -106,6 +107,9 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         sqlCreateTags = sqlCreateTags + " text foreign key, tag text";
 
         //fake acount
+        db.execSQL("insert into " + TABLE_USER + " (username, email, password, mentor, age, date, name, website, " +
+                "headline, phone, currentposition, advice) values(John123, johnatemail.com, john123, 22, 06/04/2018, John, " +
+                "john.com, here, 1234567889, SWEng, 'work hard')");
 
         db.execSQL(sqlCreateUser);
         db.execSQL(sqlCreateEducation);
@@ -114,10 +118,6 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.execSQL(sqlCreateChapter);
         db.execSQL(sqlCreateDegree);
         db.execSQL(sqlCreateTags);
-
-        db.execSQL("insert into " + TABLE_USER + " (username, email, password, age, date, name, website, " +
-                "headline, phone, currentposition, advice) values(John123, johnatemail.com, john123, 22, 06/04/2018, John, " +
-                "john.com, here, 1234567889, SWEng, 'work hard')");
 //        db.execSQL(sqlCreateWork);
     }
 
@@ -148,18 +148,20 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             user.setUSERNAME(cursor.getString(0));
             user.setEMAIL(cursor.getString(1));
             user.setPASSWORD(cursor.getString(2));
-            user.setAGE(cursor.getString(3));
-            user.setDATE(cursor.getString(4));
-            user.setNAME(cursor.getString(5));
-            user.setWEBSITE(cursor.getString(6));
-            user.setHEADLINE(cursor.getString(7));
-            user.setPHONE(cursor.getString(8));
-            user.setCURRPOSITION(cursor.getString(9));
-            user.setADVICE(cursor.getString(10));
+            user.setTYPE(cursor.getString(3));
+            user.setAGE(cursor.getString(4));
+            user.setDATE(cursor.getString(5));
+            user.setNAME(cursor.getString(6));
+            user.setWEBSITE(cursor.getString(7));
+            user.setHEADLINE(cursor.getString(8));
+            user.setPHONE(cursor.getString(9));
+            user.setCURRPOSITION(cursor.getString(10));
+            user.setADVICE(cursor.getString(11));
         }else{
             user.setUSERNAME("");
             user.setEMAIL("");
             user.setPASSWORD("");
+            user.setTYPE("");
             user.setAGE("");
             user.setDATE("");
             user.setNAME("");
@@ -271,6 +273,24 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             User user = new User();
             users.add(user);
         }
+        cursor.close();
+        return users;
+    }
+
+    public ArrayList<User> searchMentors() { //FIX THIS
+        String sqlQuery = "select * from " + TABLE_USER;
+        sqlQuery += " where " + TYPE + " = mentor";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+
+        ArrayList<User> users = new ArrayList<User>();
+
+        while (cursor.moveToNext()) {
+            User user = new User();
+            users.add(user);
+        }
+        cursor.close();
         return users;
     }
 

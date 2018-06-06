@@ -75,10 +75,10 @@ class MenteeSignUp : AppCompatActivity() {
             /*
              *  Registration is complete, save info in database and go to main activity
              */
-            val user = User(username, email, password, 0)
+            val user = User(username, email, password, "mentee")
             val db = DatabaseManager(this)
             db.insertWithEmailAndPW(user)
-            Toast.makeText(this, "Login Sucessful for " + user.getUSERNAME() + ", "+ user.getEMAIL() + ", "+ user.getPASSWORD() , Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Login Successful for " + user.getUSERNAME() + ", "+ user.getEMAIL() + ", "+ user.getPASSWORD() , Toast.LENGTH_LONG).show()
 
             val insertIntent = Intent(this, MainActivity::class.java)
             this.startActivity(insertIntent)
