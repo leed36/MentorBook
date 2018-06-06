@@ -3,12 +3,14 @@ package a497g.csci.leedjimin.mentorbook
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_welcome.*
+import java.io.Serializable
 
-class WelcomeActivity : AppCompatActivity() {
+class WelcomeActivity : AppCompatActivity(), Serializable {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,12 +55,13 @@ class WelcomeActivity : AppCompatActivity() {
 
         }
 
-
         // If user exists
         if(check) {
+            val value = user.username
             Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
-            val insertIntent = Intent(this, MainActivity::class.java)
-            insertIntent.putExtra("Username", user.username)
+            var insertIntent = Intent(this, MainActivity::class.java)
+            insertIntent.putExtra("Username", value)
+//            Log.d("extra", insertIntent.getStringExtra("Username"))
             this.startActivity(insertIntent)
         }
         else{
