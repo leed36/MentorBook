@@ -36,7 +36,7 @@ public class ProfileFragment extends Fragment {
         P = (EditText) rootView.findViewById(R.id.phoneInput);
 
         N.setText(user.getNAME());
-        UN.setText(user.getUSERNAME());
+        UN.setText(MainActivity.username);
         W.setText(user.getWEBSITE());
         HL.setText(user.getHEADLINE());
         P.setText(user.getPHONE());
