@@ -39,7 +39,7 @@ class WelcomeActivity : AppCompatActivity() {
         //getUser
         val db = DatabaseManager(this)
         var user = db.findUserBasic(username);
-        
+
         if(user.getUSERNAME().equals("")){
             check = false
             Toast.makeText(this, "username:" + username + " does not exist", Toast.LENGTH_LONG).show()
