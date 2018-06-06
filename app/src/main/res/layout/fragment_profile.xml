@@ -122,6 +122,7 @@
         android:layout_marginLeft="10dp"
         android:text="HEADLINE"
         android:textSize="20sp"/>
+
     <EditText
         android:id="@+id/headlineInput"
         android:layout_width="150dp"
@@ -132,7 +133,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:textSize="20sp"
-
         android:inputType="text"/>
 
     <View
