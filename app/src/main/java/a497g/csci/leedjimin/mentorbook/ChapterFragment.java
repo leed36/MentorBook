@@ -39,6 +39,8 @@ public class ChapterFragment extends Fragment {
     private RelativeLayout myLayout = null;
     private Button buttonAdd;
     private LinearLayout myContainer;
+    DatabaseManager DB;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -56,6 +58,12 @@ public class ChapterFragment extends Fragment {
                 String chapter = newChapter.getText().toString();
                 if(!chapter.equals("")) {
 
+                    /** Add text to database    **/
+                    String username = "username";
+                    DB = new DatabaseManager(getActivity());
+                    DB.insertChapter(username,chapter );
+                    
+                    /** Add chapter to chapter fragment**/
                     LayoutInflater layoutInflater =
                             (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     /** Create chapter row using chapterrow.xml **/
