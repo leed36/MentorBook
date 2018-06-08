@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textNam"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:text="USERNAME"
         android:textSize="20sp"/>
@@ -96,7 +96,7 @@
     android:layout_height="wrap_content"
     android:layout_below="@id/textUser"
     android:layout_alignParentLeft="true"
-    android:layout_marginTop="15dp"
+    android:layout_marginTop="20dp"
     android:layout_marginLeft="10dp"
     android:text="WEBSITE"
     android:textSize="20sp"/>
@@ -118,7 +118,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textWebsite"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
         android:text="HEADLINE"
         android:textSize="20sp"/>
