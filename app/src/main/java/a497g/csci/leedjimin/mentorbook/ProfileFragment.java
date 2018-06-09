@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ProfileFragment extends Fragment {
@@ -16,7 +17,7 @@ public class ProfileFragment extends Fragment {
     Button Done;
     Button Cancel;
     EditText N;
-    EditText UN;
+    TextView UN;
     EditText W;
     EditText HL;
     EditText P;
@@ -30,9 +31,8 @@ public class ProfileFragment extends Fragment {
         userNam = MainActivity.username;
         user = DB.findUser(userNam);
         Done = (Button) rootView.findViewById(R.id.doneButton);
-        Cancel = (Button) rootView.findViewById(R.id.cancelButton);
         N = (EditText) rootView.findViewById(R.id.nameInput);
-        UN = (EditText) rootView.findViewById(R.id.userInput);
+        UN = (TextView) rootView.findViewById(R.id.userInput);
         W = (EditText) rootView.findViewById(R.id.websiteInput);
         HL = (EditText) rootView.findViewById(R.id.headlineInput);
         P = (EditText) rootView.findViewById(R.id.phoneInput);
@@ -47,13 +47,8 @@ public class ProfileFragment extends Fragment {
         Done.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                DB.updateProfile(N.toString(), UN.toString(), W.toString(), HL.toString(), P.toString());
-                user = DB.findUser(UN.toString());
-                user.setNAME(N.toString());
-                user.setWEBSITE(W.toString());
-                user.setHEADLINE(HL.toString());
-                user.setPHONE(P.toString());
-                Toast.makeText(getContext(), "Update Successful", Toast.LENGTH_LONG).show();
+                DB.updateProfile(N.getText().toString(), UN.getText().toString(), W.getText().toString(), HL.getText().toString(), P.getText().toString());
+                Toast.makeText(getContext(), "Update Success!", Toast.LENGTH_LONG).show();
             }
         });
         return rootView;
