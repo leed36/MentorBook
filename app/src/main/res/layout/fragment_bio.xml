@@ -49,20 +49,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="CURRENT POSITION"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
+
             <EditText
                 android:id="@+id/positionInput"
-                android:textSize="20sp"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="42dp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/textPosition"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/textHistory"
@@ -73,12 +74,12 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:text="WORK HISTORY"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
             <EditText
                 android:id="@+id/historyInput"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="42dp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/textHistory"
                 android:layout_marginLeft="10dp"
@@ -94,12 +95,12 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:text="EDUCATION"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
             <EditText
                 android:id="@+id/educationInput"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="20sp"
+                android:layout_height="42dp"
+                android:textSize="15sp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/textEducation"
                 android:layout_marginLeft="10dp"
@@ -115,12 +116,12 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:text="MAJOR/MINOR"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
             <EditText
                 android:id="@+id/majorMinorInput"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="20sp"
+                android:layout_height="42dp"
+                android:textSize="15sp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/textMajorMinor"
                 android:layout_marginLeft="10dp"
@@ -136,13 +137,13 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:text="COURSES"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
             <EditText
                 android:id="@+id/courseInput"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="42dp"
                 android:layout_alignParentLeft="true"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:layout_below="@id/textCourse"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -161,11 +162,11 @@
             <EditText
                 android:id="@+id/scholarshipInput"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="42dp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/textScholarship"
                 android:layout_marginLeft="10dp"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:layout_marginRight="10dp"
                 android:inputType="text"/>
 
@@ -178,13 +179,13 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:text="ADVICE TO MENTEES"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
             <EditText
                 android:id="@+id/adviceInput"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="42dp"
                 android:layout_alignParentLeft="true"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:layout_below="@id/textAdvice"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -203,9 +204,9 @@
             <EditText
                 android:id="@+id/tagInput"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="42dp"
                 android:layout_alignParentLeft="true"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:layout_below="@id/textTag"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
