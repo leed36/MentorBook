@@ -9,35 +9,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class ProfileFragment extends Fragment {
     DatabaseManager DB;
-    User user = new User();
     Button Done;
     Button Cancel;
     EditText N;
-    EditText UN;
+    TextView UN;
     EditText W;
     EditText HL;
     EditText P;
-    String userNam;
+    String userNam = "";
+    User user;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-        userNam = user.getUSERNAME();
         DB = new DatabaseManager(getActivity());
-        DB.findUser(userNam);
+        userNam = MainActivity.username;
+        user = DB.findUser(userNam);
         Done = (Button) rootView.findViewById(R.id.doneButton);
-        Cancel = (Button) rootView.findViewById(R.id.cancelButton);
         N = (EditText) rootView.findViewById(R.id.nameInput);
-        UN = (EditText) rootView.findViewById(R.id.userInput);
+        UN = (TextView) rootView.findViewById(R.id.userInput);
         W = (EditText) rootView.findViewById(R.id.websiteInput);
         HL = (EditText) rootView.findViewById(R.id.headlineInput);
         P = (EditText) rootView.findViewById(R.id.phoneInput);
 
         N.setText(user.getNAME());
-        UN.setText(MainActivity.username);
+        UN.setText(user.getUSERNAME());
         W.setText(user.getWEBSITE());
         HL.setText(user.getHEADLINE());
         P.setText(user.getPHONE());
@@ -46,7 +47,8 @@ public class ProfileFragment extends Fragment {
         Done.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                DB.updateProfile(N.toString(), UN.toString(), W.toString(), HL.toString(), P.toString());
+                DB.updateProfile(N.getText().toString(), UN.getText().toString(), W.getText().toString(), HL.getText().toString(), P.getText().toString());
+                Toast.makeText(getContext(), "Update Success!", Toast.LENGTH_LONG).show();
             }
         });
         return rootView;

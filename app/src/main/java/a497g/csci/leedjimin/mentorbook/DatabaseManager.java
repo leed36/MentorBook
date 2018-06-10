@@ -112,9 +112,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.execSQL(sqlCreateTags);
 //        db.execSQL(sqlCreateWork);
         //fake account
-//        db.execSQL("insert into " + TABLE_USER + " (username, email, password, mentor, age, date, name, website, " +
-//                "headline, phone, currentposition, advice) values(John123, johnatemail.com, john123, 22, 06/04/2018, John, " +
-//                "john.com, here, 1234567889, SWEng, 'work hard')");
+
     }
 
     @Override
@@ -162,6 +160,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             user.setPHONE(cursor.getString(9));
             user.setCURRPOSITION(cursor.getString(10));
             user.setADVICE(cursor.getString(11));
+            cursor.close();
         }else{
             user.setUSERNAME("");
             user.setEMAIL("");
@@ -336,7 +335,6 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(NAME, nam);
-        contentValues.put(USERNAME, userNam);
         contentValues.put(WEBSITE, web);
         contentValues.put(HEADLINE, headLine);
         contentValues.put(PHONE, Phone);

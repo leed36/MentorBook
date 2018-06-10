@@ -39,6 +39,9 @@ public class User {
         this.PASSWORD = password;
         this.TYPE = type;
     }
+    public User(String username){
+        this.USERNAME = username;
+    }
 
     //SETTERS
     public void setTYPE(String ty) {
