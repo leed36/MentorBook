@@ -214,6 +214,38 @@ public final class DatabaseManager extends SQLiteOpenHelper {
 
         db.close();
     }
+    /** Created by Trevor Glass
+     *
+     *  Used in Chapter Fragment to add chapter into database
+     */
+    public void insertChapter(String user, String chapter){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(USERNAME,user);
+        values.put("chapter", chapter);
+        db.insert(CHAPTER_TABLE,null,values);
+        db.close();
+    }
+
+    public ArrayList<String> getChapters(String username){
+        String[] args = {username};
+        String sqlQuery = "select * from " + CHAPTER_TABLE;
+        sqlQuery += " where " + USERNAME + " = ?";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, args);
+
+        ArrayList<String> chapters = new ArrayList<String>();
+
+         while(cursor.moveToNext()){
+             chapters.add(cursor.getString(1));
+         }
+         cursor.close();
+
+         db.close();
+         return chapters;
+    }
+
 
     public void insertBioWithUN(User user) { //update
         SQLiteDatabase db = this.getWritableDatabase();
@@ -264,6 +296,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         return users;
 
     }
+
     public ArrayList<User> search(String word) { //FIX THIS
         String sqlQuery = "select * from " + TABLE_USER;
         sqlQuery += " where " + EMAIL + " = " + word + "";

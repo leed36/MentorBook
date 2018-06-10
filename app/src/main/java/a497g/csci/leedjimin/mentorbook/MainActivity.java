@@ -86,4 +86,9 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public String getUsername(){
+        return username;
+    }
+
 }
