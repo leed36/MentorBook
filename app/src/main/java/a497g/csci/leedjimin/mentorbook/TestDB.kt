@@ -18,20 +18,21 @@ class TestDB : AppCompatActivity() {
 
         test.setOnClickListener{
             val db = DatabaseManager(this)
-            var user: ArrayList<User> = db.getAllUsers();
+
+            var user: ArrayList<String> = db.getChapters("glasstrev");
             if(user.size == 0){
-                Toast.makeText(this, "Nothing in user table", Toast.LENGTH_LONG).show()
-                test8.setText("Nothing in user table");
+                Toast.makeText(this, "Nothing in chapter table", Toast.LENGTH_LONG).show()
+                test8.setText("Nothing in choater table");
             }else{
                 test8.setText(user.size.toString());
             }
-            if(user.size > 0) test1.setText(user[0].getUSERNAME());
-            if(user.size > 1) test2.setText(user[1].getUSERNAME());
-            if(user.size > 2) test3.setText(user[2].getUSERNAME());
-            if(user.size > 3) test4.setText(user[3].getUSERNAME());
-            if(user.size > 4) test5.setText(user[4].getUSERNAME());
-            if(user.size > 5) test6.setText(user[5].getUSERNAME());
-            if(user.size > 6) test7.setText(user[6].getUSERNAME());
+            if(user.size > 0) test1.setText(user[0]);
+            if(user.size > 1) test2.setText(user[1]);
+            if(user.size > 2) test3.setText(user[2]);
+            if(user.size > 3) test4.setText(user[3]);
+            if(user.size > 4) test5.setText(user[4]);
+            if(user.size > 5) test6.setText(user[5]);
+            if(user.size > 6) test7.setText(user[6]);
 
 
 
