@@ -48,7 +48,9 @@ public class HomeFragment extends Fragment{
 
     public ArrayList<String> convertUsers(ArrayList<User> ul) {
         ArrayList<String> newUl = new ArrayList<String>();
-
+        for (User user : ul) {
+            newUl.add(user.getNAME() + "-" + user.getCURRPOSITION());
+        }
         return newUl;
     }
 
