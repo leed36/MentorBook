@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.widget.Toast;
@@ -69,7 +70,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         sqlCreateUser = sqlCreateUser + " text primary key, email text, password";
         sqlCreateUser = sqlCreateUser + " text, type text, age text, date text, name";
         sqlCreateUser = sqlCreateUser + " text, website text, headline text, phone";
-        sqlCreateUser = sqlCreateUser + " text, currentposition text, advice text)";
+        sqlCreateUser = sqlCreateUser + " text, currentposition text, advice text, image BLOB)";
 
         /** Education table query   **/
         String sqlCreateEducation = "create table " +  EDUCATION_TABLE + "( username";
@@ -252,6 +253,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         String sqlInsert = "update" + TABLE_USER;
         sqlInsert += "set " +"a";
         sqlInsert += "where " + EMAIL + " = " + user.getEMAIL();
+        db.close();
     }
 
     public void deleteByEmail(String email) {
@@ -274,6 +276,8 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             user.setUSERNAME(cursor.getString(0));
         }
 
+        cursor.close();
+        db.close();
         return user;
     }
 
@@ -293,6 +297,8 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             users.add(user);
         }
 
+        db.close();
+        cursor.close();
         return users;
 
     }
@@ -311,15 +317,16 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             users.add(user);
         }
         cursor.close();
+        db.close();
         return users;
     }
 
-    public ArrayList<User> searchMentors() { //FIX THIS
+    public ArrayList<User> searchByType(String type) { //FIX THIS
         String sqlQuery = "select * from " + TABLE_USER;
-        sqlQuery += " where " + TYPE + " = mentor";
-
+        sqlQuery += " where " + TYPE + " = ?";
+        String[] args = {type};
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(sqlQuery, null);
+        Cursor cursor = db.rawQuery(sqlQuery, args);
 
         ArrayList<User> users = new ArrayList<User>();
 
@@ -328,6 +335,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             users.add(user);
         }
         cursor.close();
+        db.close();
         return users;
     }
 
@@ -339,10 +347,40 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         contentValues.put(HEADLINE, headLine);
         contentValues.put(PHONE, Phone);
         db.update(TABLE_USER, contentValues, "username = ?",new String[] {userNam});
+        db.close();
     }
 
+    public void insertTags(String rawTags, String username){
+            /** Parse the tags by eliminating commas, seperate by spaces **/
+            String parsed = rawTags.replaceAll(", ", " ");
+            String tags[] = parsed.split(" ",0);
+
+        }
 
     public void updateBio(){
 
     }
+
+
+    public void insertImage( String username, byte[] image) throws SQLiteException {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("image",image);
+        db.update(TABLE_USER, cv, USERNAME + " = ?", new String[]{username});
+        db.close();
+    }
+
+    public byte[] getImage(String username){
+        SQLiteDatabase db = this.getWritableDatabase();
+        byte[] image;
+        Cursor cursor = db.rawQuery("SELECT * from " + TABLE_USER +" WHERE username = ?", new String[] {username});
+        if(cursor.moveToFirst()){
+            image = cursor.getBlob(12);
+        }else{
+            image = null;
+        }
+        db.close();
+        return image;
+    }
+
 }

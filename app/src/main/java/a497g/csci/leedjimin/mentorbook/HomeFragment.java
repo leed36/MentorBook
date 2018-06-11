@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         DB = new DatabaseManager(getActivity());
-        userList = DB.searchMentors();
+        userList = DB.searchByType("mentor");
 
         searchEdit = (EditText)rootView.findViewById(R.id.searchEdit);
         listview = (ListView) rootView.findViewById(R.id.listViewSearch);
