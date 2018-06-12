@@ -71,7 +71,7 @@ public class ProfileFragment extends Fragment {
             if(userImage!= null) userImage.setImageBitmap(newImage);
 
         }else{
-            Toast.makeText(getContext(), "No profile pick found!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "No profile pic found!", Toast.LENGTH_LONG).show();
 
 
         }

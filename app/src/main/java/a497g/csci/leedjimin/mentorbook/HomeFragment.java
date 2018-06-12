@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
 
     public void updateView(ArrayList<String> listArg) {
         for (String s: listArg) {
-
+            final String un = getUsername(s);
             LayoutInflater layoutInflater =
                     (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -89,6 +89,7 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), ViewUserActivity.class);
+                    intent.putExtra("username", un);
                     startActivity(intent);
                 }
             });
@@ -96,6 +97,11 @@ public class HomeFragment extends Fragment {
             /** Add new TextView to current xml layout  **/
             myContainer.addView(addView);
         }
+    }
+
+    public String getUsername(String st) {
+        String[] str2 = st.split(" ");
+        return str2[0];
     }
 
     public ArrayList<String> convertUsers(ArrayList<User> ul) {
