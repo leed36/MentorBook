@@ -45,7 +45,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         searchBtn = (Button)view.findViewById(R.id.searchBtn);
         DB = new DatabaseManager(getActivity());
-        userList = convertUsers(DB.searchMentors());
+        userList = convertUsers(DB.searchByType("mentor"));
 
         searchEdit = (EditText) view.findViewById(R.id.searchEdit);
         myLayout = (RelativeLayout) view.findViewById(R.id.fragmentHome);
