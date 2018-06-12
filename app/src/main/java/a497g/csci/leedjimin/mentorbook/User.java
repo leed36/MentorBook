@@ -26,6 +26,10 @@ public class User {
     private String PHONE = "";
     private String CURRPOSITION = "";
     private String ADVICE = "";
+    private String WORKHISTORY = "";
+    private String MAJORMINOR = "";
+    private String SCHOLARSHIP = "";
+    private String TAG = "";
 
 
     //Constructor used in MentorSignUp & MenteeSignUp kt files
@@ -44,6 +48,14 @@ public class User {
     }
 
     //SETTERS
+    public void setTAG(String t) { this.TAG = t; }
+
+    public void setSCHOLARSHIP(String s) { this.SCHOLARSHIP = s;}
+
+    public void setWORKHISTORY(String wh) { this.WORKHISTORY = wh; }
+
+    public void setMAJORMINOR (String mm){ this.MAJORMINOR = mm; }
+
     public void setTYPE(String ty) {
         this.TYPE = ty;
     }
@@ -113,6 +125,14 @@ public class User {
     public void setADVICE(String ADVICE) { this.ADVICE = ADVICE; }
 
     //GETTERS
+    public String getTAG() { return TAG; }
+
+    public String getSCHOLARSHIP() {return SCHOLARSHIP;}
+
+    public String getWORKHISTORY() {return WORKHISTORY;}
+
+    public String getMAJORMINOR() {return MAJORMINOR;}
+
     public String getTYPE() {return TYPE; }
 
     public String getUSERNAME() {

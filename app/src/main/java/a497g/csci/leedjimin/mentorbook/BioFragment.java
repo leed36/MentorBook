@@ -9,11 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class BioFragment extends Fragment {
     DatabaseManager myDB;
     Button done;
-    Button cancel;
     EditText CP;
     EditText WH;
     EditText E;
@@ -22,13 +22,16 @@ public class BioFragment extends Fragment {
     EditText S;
     EditText ATM;
     EditText T;
+    String userNam = "";
+    User user;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootV = inflater.inflate(R.layout.fragment_bio, container, false);
         myDB = new DatabaseManager(getActivity());
         done = (Button) rootV.findViewById(R.id.doneButton1);
-        cancel = (Button) rootV.findViewById(R.id.cancelButton1);
+        userNam = MainActivity.username;
+        user = myDB.findUser(userNam);
         CP = (EditText) rootV.findViewById(R.id.positionInput);
         WH = (EditText) rootV.findViewById(R.id.historyInput);
         E = (EditText) rootV.findViewById(R.id.educationInput);
@@ -38,17 +41,28 @@ public class BioFragment extends Fragment {
         ATM = (EditText) rootV.findViewById(R.id.adviceInput);
         T = (EditText) rootV.findViewById(R.id.tagInput);
 
-        addData();
-        return rootV;
-    }
+        CP.setText(user.getCURRPOSITION());
+        WH.setText(user.getWORKHISTORY());
+        E.setText(user.getSCHOOL());
+        MM.setText(user.getMAJORMINOR());
+        C.setText(user.getCLASSNAME());
+        S.setText(user.getSCHOLARSHIP());
+        ATM.setText(user.getADVICE());
+        T.setText(user.getTAG());
 
-    public void addData(){
         done.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //insert datas...
+                myDB.updateBioU(userNam, CP.getText().toString(), WH.getText().toString(), ATM.getText().toString());
+                myDB.updateBioE(userNam, E.getText().toString(), MM.getText().toString());
+                myDB.updateBioC(userNam, C.getText().toString());
+                myDB.updateBioS(userNam, S.getText().toString());
+                myDB.updateBioT(userNam, T.getText().toString());
+                Toast.makeText(getContext(), "Update Success!", Toast.LENGTH_LONG).show();
             }
         });
+        return rootV;
     }
+
 }
 

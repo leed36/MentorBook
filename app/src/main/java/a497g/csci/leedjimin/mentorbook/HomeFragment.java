@@ -29,13 +29,13 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        DB = new DatabaseManager(getActivity());
-        userList = DB.searchMentors();
-
-        searchEdit = (EditText)rootView.findViewById(R.id.searchEdit);
-        listview = (ListView) rootView.findViewById(R.id.listViewSearch);
-        listAdapter = new ArrayAdapter(this, R.layout.simplerow, userList);
-        listview.setOnItemClickListener(this);
+//        DB = new DatabaseManager(getActivity());
+//        userList = DB.searchMentors();
+//
+//        searchEdit = (EditText)rootView.findViewById(R.id.searchEdit);
+//        listview = (ListView) rootView.findViewById(R.id.listViewSearch);
+//        //listAdapter = new ArrayAdapter(this, R.layout.simplerow, userList);
+//        listview.setOnItemClickListener(this);
         return rootView;
     }
 
@@ -44,11 +44,11 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
     }
 
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {
-        Log.i("HelloListView", "You clicked Item: " + id + " at position:" + position);
-        // Then you start a new Activity via Intent
-        Intent intent = new Intent(getActivity(), ViewUserActivity.class);
-        intent.putExtra("username", username);
-        getActivity().startActivity(intent);
+//        Log.i("HelloListView", "You clicked Item: " + id + " at position:" + position);
+//        // Then you start a new Activity via Intent
+//        Intent intent = new Intent(getActivity(), ViewUserActivity.class);
+//        intent.putExtra("username", username);
+//        getActivity().startActivity(intent);
     }
 
 }

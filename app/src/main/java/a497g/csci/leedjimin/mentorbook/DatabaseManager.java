@@ -48,6 +48,10 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     private static final String PHONE = "phone";
     private static final String DATE = "date";
     private static final String ADVICE = "advice";
+    private static final String WORK_HISTORY = "workHistory";
+    private static final String MAJOR_MINOR = "majorMinor";
+    private static final String SCHOLARSHIP = "scholarship";
+    private static final String TAG = "tag";
 
 
     private static final String SCHOLARSHIP_TABLE = "scholarshipTable";
@@ -69,13 +73,13 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         sqlCreateUser = sqlCreateUser + " text primary key, email text, password";
         sqlCreateUser = sqlCreateUser + " text, type text, age text, date text, name";
         sqlCreateUser = sqlCreateUser + " text, website text, headline text, phone";
-        sqlCreateUser = sqlCreateUser + " text, currentposition text, advice text)";
+        sqlCreateUser = sqlCreateUser + " text, currentposition text, advice text, workHistory text)";
 
         /** Education table query   **/
         String sqlCreateEducation = "create table " +  EDUCATION_TABLE + "( username";
         sqlCreateEducation = sqlCreateEducation + " text, school";
         sqlCreateEducation = sqlCreateEducation + " text, schoolStart text, schoolEnd";
-        sqlCreateEducation = sqlCreateEducation + " text, foreign key(username) references userTable(username))";
+        sqlCreateEducation = sqlCreateEducation + " text, majorMinor text, foreign key(username) references userTable(username))";
 
         /** Course Table query  **/
         String sqlCreateCourse = "create table " + COURSE_TABLE + "( ";
@@ -143,9 +147,46 @@ public final class DatabaseManager extends SQLiteOpenHelper {
      *
      *
      */
+
+
     public User findUser(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         User user = new User();
+
+        Cursor currrr = db.rawQuery("SELECT * from " + TAG_TABLE + " WHERE username = ?", new String[] {name});
+        if(currrr.moveToFirst()){
+            user.setTAG(currrr.getString(1));
+        }else{
+            user.setTAG("");
+        }
+        currrr.close();
+
+        Cursor currr = db.rawQuery("SELECT * from " + SCHOLARSHIP_TABLE + " WHERE username = ?", new String[] {name});
+        if(currr.moveToFirst()){
+            user.setSCHOLARSHIP(currr.getString(0));
+        }else{
+            user.setSCHOLARSHIP("");
+        }
+        currr.close();
+
+        Cursor curr = db.rawQuery("SELECT * from " + COURSE_TABLE + " WHERE username = ?", new String[] {name});
+        if(curr.moveToFirst()){
+            user.setCLASSNAME(curr.getString(1));
+        }else{
+            user.setCLASSNAME("");
+        }
+        curr.close();
+
+        Cursor cur = db.rawQuery("SELECT * from " + EDUCATION_TABLE + " WHERE username = ?", new String[] {name});
+        if(cur.moveToFirst()){
+            user.setSCHOOL(cur.getString(1));
+            user.setMAJORMINOR(cur.getString(4));
+        }else{
+            user.setSCHOOL("");
+            user.setMAJORMINOR("");
+        }
+        cur.close();
+
         Cursor cursor = db.rawQuery("SELECT * from " + TABLE_USER +" WHERE username = ?", new String[] {name});
         if(cursor.moveToFirst()){
             user.setUSERNAME(cursor.getString(0));
@@ -160,7 +201,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             user.setPHONE(cursor.getString(9));
             user.setCURRPOSITION(cursor.getString(10));
             user.setADVICE(cursor.getString(11));
-            cursor.close();
+            user.setWORKHISTORY(cursor.getString(12));
         }else{
             user.setUSERNAME("");
             user.setEMAIL("");
@@ -174,7 +215,9 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             user.setPHONE("");
             user.setCURRPOSITION("");
             user.setADVICE("");
+            user.setWORKHISTORY("");
         }
+        cursor.close();
 
         return user;
     }
@@ -309,7 +352,40 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     }
 
 
-    public void updateBio(){
+    public void updateBioU(String userNam, String currPosition, String workHistory, String advice){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CURRENT_POSITION, currPosition);
+        contentValues.put(WORK_HISTORY, workHistory);
+        contentValues.put(ADVICE, advice);
+        db.update(TABLE_USER, contentValues, "username = ?", new String[] {userNam});
+    }
 
+    public void updateBioE(String userNam, String school, String majorMinor){
+        SQLiteDatabase db1 = this.getWritableDatabase();
+        ContentValues content = new ContentValues();
+        content.put(SCHOOL, school);
+        content.put(MAJOR_MINOR, majorMinor);
+        db1.update(EDUCATION_TABLE, content, "username = ?", new String[] {userNam});
+    }
+
+    public void updateBioC(String userNam, String course){
+        SQLiteDatabase db2 = this.getWritableDatabase();
+        ContentValues content = new ContentValues();
+        content.put(CLASSNAME, course);
+        db2.update(COURSE_TABLE, content, "username = ?", new String[] {userNam});
+    }
+    public void updateBioS(String userNam, String scholarship){
+        SQLiteDatabase db3 = this.getWritableDatabase();
+        ContentValues content = new ContentValues();
+        content.put(SCHOLARSHIP, scholarship);
+        db3.update(SCHOLARSHIP_TABLE, content, "username = ?", new String[] {userNam});
+    }
+    public void updateBioT(String userNam, String tag){
+        SQLiteDatabase db4 = this.getWritableDatabase();
+        ContentValues content = new ContentValues();
+        content.put(TAG, tag);
+        db4.update(TAG_TABLE, content, "username = ?", new String[] {userNam});
     }
 }
+
