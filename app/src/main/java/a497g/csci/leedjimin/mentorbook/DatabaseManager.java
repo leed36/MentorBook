@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -316,10 +317,10 @@ public final class DatabaseManager extends SQLiteOpenHelper {
 
     public ArrayList<User> searchMentors() { //FIX THIS
         String sqlQuery = "select * from " + TABLE_USER;
-        sqlQuery += " where " + TYPE + " = mentor";
+        sqlQuery += " where " + TYPE + " = ?";
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(sqlQuery, null);
+        Cursor cursor = db.rawQuery(sqlQuery, new String[] {"mentor"});
 
         ArrayList<User> users = new ArrayList<User>();
 
