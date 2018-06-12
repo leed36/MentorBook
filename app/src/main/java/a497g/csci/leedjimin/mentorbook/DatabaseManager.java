@@ -7,8 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.util.Log;
 import android.widget.Toast;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 
 
@@ -21,7 +23,6 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     private static final String PASSWORD = "password";
     private static final String EMAIL = "email";
     private static final String AGE = "age";
-    private static final String PROFILE_PHOTO = "profilePhoto";
 
     private static final String EDUCATION_TABLE = "eduHistTable";
     private static final String PLACE = "place";
@@ -211,6 +212,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         values.put(USERNAME,user.getUSERNAME());
         values.put(EMAIL, user.getEMAIL());
         values.put(PASSWORD, user.getPASSWORD());
+        values.put(TYPE, user.getTYPE());
         db.insert(TABLE_USER,null,values);
 
         db.close();
@@ -323,15 +325,27 @@ public final class DatabaseManager extends SQLiteOpenHelper {
 
     public ArrayList<User> searchByType(String type) { //FIX THIS
         String sqlQuery = "select * from " + TABLE_USER;
-        sqlQuery += " where " + TYPE + " = ?";
-        String[] args = {type};
+        sqlQuery += " where " + TYPE + " = '" + type + "'";
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(sqlQuery, args);
+        Cursor cursor = db.rawQuery(sqlQuery, null);
 
         ArrayList<User> users = new ArrayList<User>();
 
         while (cursor.moveToNext()) {
             User user = new User();
+            user.setUSERNAME(cursor.getString(0));
+            user.setEMAIL(cursor.getString(1));
+            user.setPASSWORD(cursor.getString(2));
+            user.setTYPE(cursor.getString(3));
+            user.setAGE(cursor.getString(4));
+            user.setDATE(cursor.getString(5));
+            user.setNAME(cursor.getString(6));
+            user.setWEBSITE(cursor.getString(7));
+            user.setHEADLINE(cursor.getString(8));
+            user.setPHONE(cursor.getString(9));
+            user.setCURRPOSITION(cursor.getString(10));
+            user.setADVICE(cursor.getString(11));
+            Log.w("adding user", user.getUSERNAME());
             users.add(user);
         }
         cursor.close();

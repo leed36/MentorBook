@@ -1,6 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp">
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="360dp"
+        android:layout_height="511dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/mentorOrMentee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/advice"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-30dp"
+                android:text="TextView" />
+
+            <ImageView
+                android:id="@+id/profPic"
+                android:layout_width="65dp"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="44dp"
+                android:layout_marginTop="45dp"
+                app:srcCompat="?attr/actionBarDivider" />
+
+            <Button
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tags"
+                android:layout_alignStart="@+id/tags"
+                android:onClick="goBack"
+                android:text="Cancel" />
+
+            <Button
+                android:id="@+id/followBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tags"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="14dp"
+                android:onClick="follow"
+                android:text="Follow" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/advice"
+                android:layout_alignParentBottom="true"
+                android:text="Email" />
+
+            <TextView
+                android:id="@+id/emailText"
+                android:layout_width="234dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/backBtn"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/tags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="57dp"
+                android:layout_marginEnd="69dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="69dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="57dp"
+                android:text="Tags" />
+
+            <TextView
+                android:id="@+id/tagsText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="17dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/advice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_marginEnd="58dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="58dp"
+                android:layout_marginStart="16dp"
+                android:text="Advice" />
+
+            <TextView
+                android:id="@+id/adviceText"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="7dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/scholarships"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginStart="16dp"
+                android:text="Scholarships" />
+
+            <TextView
+                android:id="@+id/scholarshipsText"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/courses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="48dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="7dp"
+                android:text="Courses" />
+
+            <TextView
+                android:id="@+id/coursesText"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/major"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="22dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="22dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="7dp"
+                android:text="Major/Minor" />
+
+            <TextView
+                android:id="@+id/majorText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/workHist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="9dp"
+                android:text="Work History" />
+
+            <TextView
+                android:id="@+id/workHistText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="-48dp"
+                android:layout_toEndOf="@+id/courses"
+                android:text="Position" />
+
+            <TextView
+                android:id="@+id/positionText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toTopOf="@+id/workHistText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/position"
+                app:layout_constraintTop_toBottomOf="@+id/headlineText" />
+
+            <TextView
+                android:id="@+id/headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="45dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="45dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="7dp"
+                android:text="Headline"
+                app:layout_constraintEnd_toStartOf="@+id/headlineText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Website" />
+
+            <TextView
+                android:id="@+id/headlineText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/Website"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="49dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="49dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="9dp"
+                android:text="Website" />
+
+            <TextView
+                android:id="@+id/websiteText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="129dp"
+                android:layout_height="32dp"
+                android:layout_alignBottom="@+id/tagsText"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/chapters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
+                android:gravity="center_horizontal"
+                android:text="Chapters"
+                android:textSize="30sp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

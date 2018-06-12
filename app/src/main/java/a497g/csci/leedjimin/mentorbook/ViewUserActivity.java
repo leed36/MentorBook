@@ -14,6 +14,10 @@ public class ViewUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_viewprofile);
     }
 
+    public void follow(View v) {
+
+    }
+
     public void goBack(View v) {
         this.finish();
     }
