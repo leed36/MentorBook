@@ -38,7 +38,6 @@ public class HomeFragment extends Fragment {
     ArrayList<String> userList;
     RelativeLayout myLayout;
     LinearLayout myContainer;
-    Button profileBtn;
 //    String userName = MainActivity.username;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -82,14 +81,19 @@ public class HomeFragment extends Fragment {
             newText.setTextSize(25);
 
             /** Add profile button for added TextView    **/
+
+            Button profileBtn;
             profileBtn = (Button) addView.findViewById(R.id.viewProf);
 
             /** View functionality for button  **/
             profileBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Intent intent = new Intent(getActivity(), ViewUserActivity.class);
-                    intent.putExtra("username", un);
+                    intent.putExtra("usernameOfProfile", un);
+                    intent.putExtra("Username", MainActivity.username);
+
                     startActivity(intent);
                 }
             });
