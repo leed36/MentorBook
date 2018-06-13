@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.widget.Toast;
@@ -73,7 +74,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         sqlCreateUser = sqlCreateUser + " text primary key, email text, password";
         sqlCreateUser = sqlCreateUser + " text, type text, age text, date text, name";
         sqlCreateUser = sqlCreateUser + " text, website text, headline text, phone";
-        sqlCreateUser = sqlCreateUser + " text, currentposition text, advice text, workHistory text)";
+        sqlCreateUser = sqlCreateUser + " text, currentposition text, advice text, workHistory text, image BLOB)";
 
         /** Education table query   **/
         String sqlCreateEducation = "create table " +  EDUCATION_TABLE + "( username";
@@ -147,8 +148,6 @@ public final class DatabaseManager extends SQLiteOpenHelper {
      *
      *
      */
-
-
     public User findUser(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         User user = new User();
@@ -201,7 +200,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             user.setPHONE(cursor.getString(9));
             user.setCURRPOSITION(cursor.getString(10));
             user.setADVICE(cursor.getString(11));
-            user.setWORKHISTORY(cursor.getString(12));
+            cursor.close();
         }else{
             user.setUSERNAME("");
             user.setEMAIL("");
@@ -257,12 +256,45 @@ public final class DatabaseManager extends SQLiteOpenHelper {
 
         db.close();
     }
+    /** Created by Trevor Glass
+     *
+     *  Used in Chapter Fragment to add chapter into database
+     */
+    public void insertChapter(String user, String chapter){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(USERNAME,user);
+        values.put("chapter", chapter);
+        db.insert(CHAPTER_TABLE,null,values);
+        db.close();
+    }
+
+    public ArrayList<String> getChapters(String username){
+        String[] args = {username};
+        String sqlQuery = "select * from " + CHAPTER_TABLE;
+        sqlQuery += " where " + USERNAME + " = ?";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, args);
+
+        ArrayList<String> chapters = new ArrayList<String>();
+
+         while(cursor.moveToNext()){
+             chapters.add(cursor.getString(1));
+         }
+         cursor.close();
+
+         db.close();
+         return chapters;
+    }
+
 
     public void insertBioWithUN(User user) { //update
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlInsert = "update" + TABLE_USER;
         sqlInsert += "set " +"a";
         sqlInsert += "where " + EMAIL + " = " + user.getEMAIL();
+        db.close();
     }
 
     public void deleteByEmail(String email) {
@@ -285,6 +317,8 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             user.setUSERNAME(cursor.getString(0));
         }
 
+        cursor.close();
+        db.close();
         return user;
     }
 
@@ -304,6 +338,8 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             users.add(user);
         }
 
+        db.close();
+        cursor.close();
         return users;
 
     }
@@ -321,15 +357,16 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             users.add(user);
         }
         cursor.close();
+        db.close();
         return users;
     }
 
-    public ArrayList<User> searchMentors() { //FIX THIS
+    public ArrayList<User> searchByType(String type) { //FIX THIS
         String sqlQuery = "select * from " + TABLE_USER;
-        sqlQuery += " where " + TYPE + " = mentor";
-
+        sqlQuery += " where " + TYPE + " = ?";
+        String[] args = {type};
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(sqlQuery, null);
+        Cursor cursor = db.rawQuery(sqlQuery, args);
 
         ArrayList<User> users = new ArrayList<User>();
 
@@ -338,6 +375,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             users.add(user);
         }
         cursor.close();
+        db.close();
         return users;
     }
 
@@ -349,8 +387,15 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         contentValues.put(HEADLINE, headLine);
         contentValues.put(PHONE, Phone);
         db.update(TABLE_USER, contentValues, "username = ?",new String[] {userNam});
+        db.close();
     }
 
+    public void insertTags(String rawTags, String username){
+            /** Parse the tags by eliminating commas, seperate by spaces **/
+            String parsed = rawTags.replaceAll(", ", " ");
+            String tags[] = parsed.split(" ",0);
+
+        }
 
     public void updateBioU(String userNam, String currPosition, String workHistory, String advice){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -387,5 +432,27 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         content.put(TAG, tag);
         db4.update(TAG_TABLE, content, "username = ?", new String[] {userNam});
     }
-}
 
+
+    public void insertImage( String username, byte[] image) throws SQLiteException {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("image",image);
+        db.update(TABLE_USER, cv, USERNAME + " = ?", new String[]{username});
+        db.close();
+    }
+
+    public byte[] getImage(String username){
+        SQLiteDatabase db = this.getWritableDatabase();
+        byte[] image;
+        Cursor cursor = db.rawQuery("SELECT * from " + TABLE_USER +" WHERE username = ?", new String[] {username});
+        if(cursor.moveToFirst()){
+            image = cursor.getBlob(12);
+        }else{
+            image = null;
+        }
+        db.close();
+        return image;
+    }
+
+}
