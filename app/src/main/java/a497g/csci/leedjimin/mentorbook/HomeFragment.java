@@ -39,12 +39,14 @@ public class HomeFragment extends Fragment {
     RelativeLayout myLayout;
     LinearLayout myContainer;
     String un;
-//    String userName = MainActivity.username;
+    String userName;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         searchBtn = (Button)view.findViewById(R.id.searchBtn);
         DB = new DatabaseManager(getActivity());
+        userName = MainActivity.username;
+        Log.w("username from home", userName);
         userList = DB.getAllFollowing(MainActivity.username); //changed to followers query
 
         searchEdit = (EditText) view.findViewById(R.id.searchEdit);
@@ -58,16 +60,15 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                String search = searchEdit.getText().toString();
-                if (search == "followers") {
+                String search = searchEdit.getText().toString().toLowerCase();
+                if (search.equals("followers")) {
                     userList = DB.getAllFollowing(MainActivity.username);
                 }
-                else if (search == "mentor") {
+                else if (search.equals("mentor")) {
                     userList = convertUsers(DB.searchByType("mentor"));
                 }
-                else if (search == "mentee") {
+                else if (search.equals("mentee")) {
                     userList = convertUsers(DB.searchByType("mentee"));
-                    updateView(userList);
                 }
                 else if (!search.equals("")) {
                     userList = convertUsers(DB.searchTag(search));

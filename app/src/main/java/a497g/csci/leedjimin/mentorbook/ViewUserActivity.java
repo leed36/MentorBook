@@ -26,8 +26,9 @@ public class ViewUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_viewprofile);
 
         usernameOfProfile = (String)this.getIntent().getSerializableExtra("usernameOfProfile"); //gets username
+        Log.w("view username", usernameOfProfile);
         username = (String)this.getIntent().getSerializableExtra("Username");
-        Toast.makeText(this, "usernameProfile: " + usernameOfProfile + "        username: " + username, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "usernameProfile: " + usernameOfProfile + "        username: " + username, Toast.LENGTH_LONG).show();
         typeTV = (TextView) findViewById(R.id.mentorOrMentee);
         nameTV = (TextView) findViewById(R.id.nameText);
         emailTV = (TextView) findViewById(R.id.emailText);
@@ -41,6 +42,8 @@ public class ViewUserActivity extends AppCompatActivity {
         scholarshipsTV = (TextView) findViewById(R.id.scholarshipsText);
         adviceTV = (TextView) findViewById(R.id.adviceText);
         tagsTV = (TextView) findViewById(R.id.tagsText);
+
+        userOf = dbManager.findUser(usernameOfProfile);
 
         typeTV.setText(userOf.getTYPE());
         nameTV.setText(userOf.getNAME());
@@ -56,7 +59,7 @@ public class ViewUserActivity extends AppCompatActivity {
     }
 
     public void follow(View v) {
-        Toast.makeText(this, "usernameProfile: " + usernameOfProfile + "        username: " + username, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "usernameProfile: " + usernameOfProfile + "        username: " + username, Toast.LENGTH_LONG).show();
         if(dbManager.getFollowing(username, usernameOfProfile).equals("")) {
             dbManager.insertFollower(usernameOfProfile, username);
         }else{
