@@ -153,7 +153,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-    public String getFollower(String user, String following){
+    public String getFollowing(String user, String following){
         SQLiteDatabase db = this.getWritableDatabase();
         String result = "";
         try{
