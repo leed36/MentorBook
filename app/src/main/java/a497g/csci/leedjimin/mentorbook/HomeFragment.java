@@ -45,7 +45,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         searchBtn = (Button)view.findViewById(R.id.searchBtn);
         DB = new DatabaseManager(getActivity());
-        userList = convertUsers(DB.searchByType("mentor")); //changed to followers query
+        userList = DB.getAllFollowing(MainActivity.username); //changed to followers query
 
         searchEdit = (EditText) view.findViewById(R.id.searchEdit);
         searchEdit.setText("followers");
@@ -60,19 +60,20 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 String search = searchEdit.getText().toString();
                 if (search == "followers") {
-                    //query for followers
+                    userList = DB.getAllFollowing(MainActivity.username);
                 }
                 else if (search == "mentor") {
                     userList = convertUsers(DB.searchByType("mentor"));
                 }
                 else if (search == "mentee") {
                     userList = convertUsers(DB.searchByType("mentee"));
+                    updateView(userList);
                 }
                 else if (!search.equals("")) {
                     userList = convertUsers(DB.searchTag(search));
-                    updateView(userList);
                     /** look in DB for the search keyword  and use updateview **/
                 }
+                updateView(userList);
             }
         });
         return view;

@@ -537,7 +537,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         return image;
     }
 
-    public ArrayList<String> getFollowers(String username){
+    public ArrayList<String> getAllFollowing(String username){
         ArrayList<String> followers = new ArrayList<String>();
         String[] args = {username};
 

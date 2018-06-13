@@ -19,7 +19,7 @@ class TestDB : AppCompatActivity() {
         test.setOnClickListener{
             val db = DatabaseManager(this)
 
-            var user: ArrayList<String> = db.getFollowers("glasst");
+            var user: ArrayList<String> = db.getAllFollowing("glasst");
             if(user.size == 0){
                 Toast.makeText(this, "Nothing in follower table for this user", Toast.LENGTH_LONG).show()
                 test8.setText("Nothing in follower table");

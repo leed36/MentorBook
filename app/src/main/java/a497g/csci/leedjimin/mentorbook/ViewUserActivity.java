@@ -57,7 +57,7 @@ public class ViewUserActivity extends AppCompatActivity {
 
     public void follow(View v) {
         Toast.makeText(this, "usernameProfile: " + usernameOfProfile + "        username: " + username, Toast.LENGTH_LONG).show();
-        if(dbManager.getFollower(username, usernameOfProfile).equals("")) {
+        if(dbManager.getFollowing(username, usernameOfProfile).equals("")) {
             dbManager.insertFollower(usernameOfProfile, username);
         }else{
             Toast.makeText(this, "already following" + usernameOfProfile, Toast.LENGTH_LONG).show();
