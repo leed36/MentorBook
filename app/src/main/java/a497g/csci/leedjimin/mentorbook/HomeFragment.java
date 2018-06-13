@@ -43,27 +43,27 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        searchBtn = (Button)view.findViewById(R.id.searchBtn);
-        DB = new DatabaseManager(getActivity());
-        userList = convertUsers(DB.searchByType("mentor"));
-
-        searchEdit = (EditText) view.findViewById(R.id.searchEdit);
-        myLayout = (RelativeLayout) view.findViewById(R.id.fragmentHome);
-        myContainer = (LinearLayout) view.findViewById(R.id.container);
-
-        updateView(userList);
-
-        searchBtn.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                String search = searchEdit.getText().toString();
-                if (!search.equals("")) {
-//                    DB.
-                    /** look in DB for the search keyword  and use updateview **/
-                }
-            }
-        });
+//        searchBtn = (Button)view.findViewById(R.id.searchBtn);
+//        DB = new DatabaseManager(getActivity());
+//        userList = convertUsers(DB.searchByType("mentor"));
+//
+//        searchEdit = (EditText) view.findViewById(R.id.searchEdit);
+//        myLayout = (RelativeLayout) view.findViewById(R.id.fragmentHome);
+//        myContainer = (LinearLayout) view.findViewById(R.id.container);
+//
+//        updateView(userList);
+//
+//        searchBtn.setOnClickListener(new View.OnClickListener(){
+//
+//            @Override
+//            public void onClick(View v) {
+//                String search = searchEdit.getText().toString();
+//                if (!search.equals("")) {
+////                    DB.
+//                    /** look in DB for the search keyword  and use updateview **/
+//                }
+//            }
+//        });
         return view;
     }
 

@@ -2,6 +2,9 @@ package a497g.csci.leedjimin.mentorbook;
 
 import android.support.constraint.Placeholder;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class User {
     private String TYPE = "";
     private String USERNAME = "";
@@ -29,7 +32,7 @@ public class User {
     private String WORKHISTORY = "";
     private String MAJORMINOR = "";
     private String SCHOLARSHIP = "";
-    private String TAG = "";
+    private ArrayList <String> TAG;
 
 
     //Constructor used in MentorSignUp & MenteeSignUp kt files
@@ -48,7 +51,7 @@ public class User {
     }
 
     //SETTERS
-    public void setTAG(String t) { this.TAG = t; }
+    public void setTAG(ArrayList<String> t) { this.TAG = t; }
 
     public void setSCHOLARSHIP(String s) { this.SCHOLARSHIP = s;}
 
@@ -125,7 +128,7 @@ public class User {
     public void setADVICE(String ADVICE) { this.ADVICE = ADVICE; }
 
     //GETTERS
-    public String getTAG() { return TAG; }
+    public ArrayList<String> getTAG() { return TAG; }
 
     public String getSCHOLARSHIP() {return SCHOLARSHIP;}
 

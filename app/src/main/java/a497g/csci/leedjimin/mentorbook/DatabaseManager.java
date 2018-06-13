@@ -10,7 +10,6 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.sql.Blob;
 import java.util.ArrayList;
 
 
@@ -152,20 +151,19 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     public User findUser(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         User user = new User();
-
+        ArrayList<String> tags = new ArrayList<>();
         Cursor currrr = db.rawQuery("SELECT * from " + TAG_TABLE + " WHERE username = ?", new String[] {name});
-        if(currrr.moveToFirst()){
-            user.setTAG(currrr.getString(1));
-        }else{
-            user.setTAG("");
+        while(currrr.moveToNext()){
+            tags.add(currrr.getString(1));
         }
+        user.setTAG(tags);
         currrr.close();
 
         Cursor currr = db.rawQuery("SELECT * from " + SCHOLARSHIP_TABLE + " WHERE username = ?", new String[] {name});
         if(currr.moveToFirst()){
-            user.setSCHOLARSHIP(currr.getString(0));
+            user.setSCHOLARSHIP(currr.getString(1));
         }else{
-            user.setSCHOLARSHIP("");
+            user.setSCHOLARSHIP("Separate each Scholarships with new line!");
         }
         currr.close();
 
@@ -201,6 +199,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             user.setPHONE(cursor.getString(9));
             user.setCURRPOSITION(cursor.getString(10));
             user.setADVICE(cursor.getString(11));
+            user.setWORKHISTORY(cursor.getString(12));
             cursor.close();
         }else{
             user.setUSERNAME("");
@@ -403,13 +402,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.update(TABLE_USER, contentValues, "username = ?",new String[] {userNam});
         db.close();
     }
-
-    public void insertTags(String rawTags, String username){
-            /** Parse the tags by eliminating commas, seperate by spaces **/
-            String parsed = rawTags.replaceAll(", ", " ");
-            String tags[] = parsed.split(" ",0);
-
-        }
+    
 
     public void updateBioU(String userNam, String currPosition, String workHistory, String advice){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -419,7 +412,22 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         contentValues.put(ADVICE, advice);
         db.update(TABLE_USER, contentValues, "username = ?", new String[] {userNam});
     }
-
+    public void insertBioEM(String userNam, String education, String majorminor){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cur = db.rawQuery("SELECT * FROM " + EDUCATION_TABLE + " WHERE username = ?", new String[] {userNam});
+        int count = 0;
+        if(cur.moveToFirst()){
+            count ++;
+        }
+        if(count == 0){
+            ContentValues values = new ContentValues();
+            values.put(USERNAME, userNam);
+            values.put(SCHOOL, education);
+            values.put(MAJOR_MINOR, majorminor);
+            db.insert(EDUCATION_TABLE, null, values);
+            db.close();
+        }
+    }
     public void updateBioE(String userNam, String school, String majorMinor){
         SQLiteDatabase db1 = this.getWritableDatabase();
         ContentValues content = new ContentValues();
@@ -428,11 +436,41 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db1.update(EDUCATION_TABLE, content, "username = ?", new String[] {userNam});
     }
 
+    public void insertBioC(String userNam, String course){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cur = db.rawQuery("SELECT * FROM " + COURSE_TABLE + " WHERE username = ?", new String[] {userNam});
+        int count = 0;
+        if(cur.moveToFirst()){
+            count ++;
+        }
+        if(count == 0){
+            ContentValues values = new ContentValues();
+            values.put(USERNAME, userNam);
+            values.put(CLASSNAME, course);
+            db.insert(COURSE_TABLE, null, values);
+            db.close();
+        }
+    }
     public void updateBioC(String userNam, String course){
         SQLiteDatabase db2 = this.getWritableDatabase();
         ContentValues content = new ContentValues();
         content.put(CLASSNAME, course);
         db2.update(COURSE_TABLE, content, "username = ?", new String[] {userNam});
+    }
+    public void insertBioS(String userNam, String scholarship){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cur = db.rawQuery("SELECT * FROM " + SCHOLARSHIP_TABLE + " WHERE username = ?", new String[] {userNam});
+        int count = 0;
+        if(cur.moveToFirst()){
+            count ++;
+        }
+        if(count == 0){
+            ContentValues values = new ContentValues();
+            values.put(USERNAME, userNam);
+            values.put(SCHOLARSHIP, scholarship);
+            db.insert(SCHOLARSHIP_TABLE, null, values);
+            db.close();
+        }
     }
     public void updateBioS(String userNam, String scholarship){
         SQLiteDatabase db3 = this.getWritableDatabase();
@@ -440,11 +478,26 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         content.put(SCHOLARSHIP, scholarship);
         db3.update(SCHOLARSHIP_TABLE, content, "username = ?", new String[] {userNam});
     }
-    public void updateBioT(String userNam, String tag){
-        SQLiteDatabase db4 = this.getWritableDatabase();
-        ContentValues content = new ContentValues();
-        content.put(TAG, tag);
-        db4.update(TAG_TABLE, content, "username = ?", new String[] {userNam});
+    public void updateBioT(String userNam, ArrayList<String> tag){
+        for(int i = 0; i < tag.size(); i ++){
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(USERNAME, userNam);
+            values.put(TAG, tag.get(i));
+            db.insert(TAG_TABLE,null,values);
+            db.close();
+        }
+    }
+    public void deleteBioT(String userNam){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cur = db.rawQuery("SELECT * from " + TAG_TABLE + " WHERE username = ?", new String[] {userNam});
+        int count = 0;
+        while(cur.moveToNext()){
+            count ++;
+        }
+        if(count != 0){
+            db.delete(TAG_TABLE, "username = ?", new String[] {userNam});
+        }
     }
 
 
