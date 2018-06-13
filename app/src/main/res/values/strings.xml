@@ -17,5 +17,6 @@
         completions."
     </string>
     <string name="searchText">Search</string>
+    <string name="viewProf">View Profile</string>
     <string name="title_activity_main_login2">Sign in</string>
 </resources>

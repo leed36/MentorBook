@@ -51,8 +51,25 @@ public class HomeFragment extends Fragment {
         myLayout = (RelativeLayout) view.findViewById(R.id.fragmentHome);
         myContainer = (LinearLayout) view.findViewById(R.id.container);
 
-        for (String s: userList) {
+        updateView(userList);
 
+        searchBtn.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                String search = searchEdit.getText().toString();
+                if (!search.equals("")) {
+//                    DB.
+                    /** look in DB for the search keyword  and use updateview **/
+                }
+            }
+        });
+        return view;
+    }
+
+    public void updateView(ArrayList<String> listArg) {
+        for (String s: listArg) {
+            final String un = getUsername(s);
             LayoutInflater layoutInflater =
                     (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -64,7 +81,7 @@ public class HomeFragment extends Fragment {
             newText.setText(s);
             newText.setTextSize(25);
 
-            /** Add remove button for added TextView    **/
+            /** Add profile button for added TextView    **/
             profileBtn = (Button) addView.findViewById(R.id.viewProf);
 
             /** View functionality for button  **/
@@ -72,6 +89,7 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), ViewUserActivity.class);
+                    intent.putExtra("username", un);
                     startActivity(intent);
                 }
             });
@@ -79,51 +97,18 @@ public class HomeFragment extends Fragment {
             /** Add new TextView to current xml layout  **/
             myContainer.addView(addView);
         }
+    }
 
-        searchBtn.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View arg0) {
-                String search = searchEdit.getText().toString();
-                if(!search.equals("")) {
-                    /** Add text to database    **/
-                    DB = new DatabaseManager(getActivity());
-
-                    /** Add chapter to chapter fragment**/
-                    LayoutInflater layoutInflater =
-                            (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-                    /** Create chapter row using chapterrow.xml **/
-                    final View addView = layoutInflater.inflate(R.layout.chapterrow, null);
-
-                    /** Add new TextView && Edit text formatting    **/
-                    TextView newText = (TextView) addView.findViewById(R.id.textout);
-                    newText.setText("hi");
-                    newText.setTextSize(20);
-
-                    /** Remove functionality for NEW remove button  **/
-                    profileBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            //start the new intent
-                        }
-                    });
-
-                    /** Add new TextView to current xml layout  **/
-                    myContainer.addView(addView);
-                }
-            }
-        });
-
-        return view;
+    public String getUsername(String st) {
+        String[] str2 = st.split(" ");
+        return str2[0];
     }
 
     public ArrayList<String> convertUsers(ArrayList<User> ul) {
         ArrayList<String> newUl = new ArrayList<String>();
-        Log.w("convertusers", "in the function");
+        Log.w("convertusers", ul.get(0).getUSERNAME());
         for (User user : ul) {
-            Log.w("convertusers",user.getNAME());
-            newUl.add(user.getNAME() + "-" + user.getCURRPOSITION());
+            newUl.add(user.getUSERNAME() + " - " + user.getTYPE());
         }
         return newUl;
     }
