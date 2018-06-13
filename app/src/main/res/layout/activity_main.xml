@@ -12,14 +12,13 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/mentorbook_logo"
-        design:layout_anchor="@+id/fragment_container"
-        design:layout_anchorGravity="top|center" />
+        android:src="@drawable/mentorbook_logo" />
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/logo"/>
+        android:layout_below="@+id/logo" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/NavBottom"
@@ -28,6 +27,5 @@
         android:layout_gravity="bottom"
         design:menu="@menu/menu_nav" />
 
-    <include layout="@layout/content_main" />
 
 </android.support.design.widget.CoordinatorLayout>
