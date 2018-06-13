@@ -128,6 +128,16 @@ public class User {
     public void setADVICE(String ADVICE) { this.ADVICE = ADVICE; }
 
     //GETTERS
+    public String getTagAsString() {
+        ArrayList<String> tags = getTAG();
+        String ret = "";
+
+        for (int i = 0; i < tags.size(); i++ ) {
+            ret += (tags.get(i) + ", ");
+        }
+        return ret;
+    }
+
     public ArrayList<String> getTAG() { return TAG; }
 
     public String getSCHOLARSHIP() {return SCHOLARSHIP;}

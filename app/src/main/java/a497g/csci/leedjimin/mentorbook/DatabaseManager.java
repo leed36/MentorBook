@@ -338,23 +338,6 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.close();
     }
 
-    public User getUser(String username){
-        User user = new User();
-        String sqlQuery = "select * from " + TABLE_USER;
-        sqlQuery += " where " + USERNAME + " = " + username + "";
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(sqlQuery, null);
-
-        if(cursor.moveToFirst()) {
-            user.setUSERNAME(cursor.getString(0));
-        }
-
-        cursor.close();
-        db.close();
-        return user;
-    }
-
     /** Created by Trevor Glass
      * Currently used for testing purposes to see if users can be retreieved from table
      * @return
@@ -376,9 +359,9 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         return users;
 
     }
-    public ArrayList<User> search(String word) { //FIX THIS
+    public ArrayList<User> searchTag(String word) { //FIX THIS
         String sqlQuery = "select * from " + TABLE_USER;
-        sqlQuery += " where " + EMAIL + " = " + word + "";
+        sqlQuery += " where " + TAG + " = " + word + "";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(sqlQuery, null);

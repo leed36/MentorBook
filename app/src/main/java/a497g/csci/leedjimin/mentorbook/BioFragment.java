@@ -57,7 +57,6 @@ public class BioFragment extends Fragment {
             for(String t : user.getTAG()){
                 tags += t + ", ";
             }
-            tags = tags.substring(0, tags.length() - 2);
             if(T != null){
                 T.setText(tags);
             }

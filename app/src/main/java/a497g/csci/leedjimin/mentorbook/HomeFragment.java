@@ -45,9 +45,10 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         searchBtn = (Button)view.findViewById(R.id.searchBtn);
         DB = new DatabaseManager(getActivity());
-        userList = convertUsers(DB.searchByType("mentor"));
+        userList = convertUsers(DB.searchByType("mentor")); //changed to followers query
 
         searchEdit = (EditText) view.findViewById(R.id.searchEdit);
+        searchEdit.setText("followers");
         myLayout = (RelativeLayout) view.findViewById(R.id.fragmentHome);
         myContainer = (LinearLayout) view.findViewById(R.id.container);
 
@@ -58,8 +59,18 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String search = searchEdit.getText().toString();
-                if (!search.equals("")) {
-//                    DB.
+                if (search == "followers") {
+                    //query for followers
+                }
+                else if (search == "mentor") {
+                    userList = convertUsers(DB.searchByType("mentor"));
+                }
+                else if (search == "mentee") {
+                    userList = convertUsers(DB.searchByType("mentee"));
+                }
+                else if (!search.equals("")) {
+                    userList = convertUsers(DB.searchTag(search));
+                    updateView(userList);
                     /** look in DB for the search keyword  and use updateview **/
                 }
             }
