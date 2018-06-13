@@ -45,6 +45,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:textSize="20sp"
                         android:text="TextView"
                         android:layout_weight="1"/>
 
@@ -60,6 +61,7 @@
                         android:id="@+id/nameText"
                         android:layout_width="129dp"
                         android:layout_height="32dp"
+                        android:textSize="18sp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
@@ -87,6 +89,7 @@
                 <TextView
                     android:id="@+id/email"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Email" />
@@ -95,9 +98,10 @@
                 <TextView
                     android:id="@+id/emailText"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:text="" />
+                    android:text="text" />
 
             </LinearLayout>
 
@@ -111,6 +115,7 @@
                 <TextView
                     android:id="@+id/Website"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:text="Website"
                     android:layout_weight="2"/>
@@ -118,6 +123,7 @@
                 <TextView
                     android:id="@+id/websiteText"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:text="TextView" />
@@ -134,6 +140,7 @@
                 <TextView
                     android:id="@+id/headline"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Headline" />
@@ -141,6 +148,7 @@
                 <TextView
                     android:id="@+id/headlineText"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:text="TextView" />
@@ -157,6 +165,7 @@
                 <TextView
                     android:id="@+id/position"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Position" />
@@ -164,6 +173,7 @@
                 <TextView
                     android:id="@+id/positionText"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:text="TextView" />
@@ -180,6 +190,7 @@
                 <TextView
                     android:id="@+id/workHist"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Work History" />
@@ -187,6 +198,7 @@
                 <TextView
                     android:id="@+id/workHistText"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:text="TextView" />
@@ -203,6 +215,7 @@
                 <TextView
                     android:id="@+id/education"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Education" />
@@ -210,6 +223,7 @@
                 <TextView
                     android:id="@+id/educationText"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:text="TextView" />
@@ -226,6 +240,7 @@
                 <TextView
                     android:id="@+id/major"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Major/Minor" />
@@ -233,6 +248,7 @@
                 <TextView
                     android:id="@+id/majorText"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:text="TextView" />
@@ -249,6 +265,7 @@
                 <TextView
                     android:id="@+id/courses"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Courses" />
@@ -256,6 +273,7 @@
                 <TextView
                     android:id="@+id/coursesText"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:text="TextView" />
@@ -272,6 +290,7 @@
                 <TextView
                     android:id="@+id/scholarships"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Scholarships" />
@@ -279,6 +298,7 @@
                 <TextView
                     android:id="@+id/scholarshipsText"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:text="asdfsadklfjiwejf" />
@@ -295,6 +315,7 @@
                 <TextView
                     android:id="@+id/advice"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Advice" />
@@ -302,6 +323,7 @@
                 <TextView
                     android:id="@+id/adviceText"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:text="text" />
@@ -318,6 +340,7 @@
                 <TextView
                     android:id="@+id/tags"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Tags" />
@@ -325,6 +348,7 @@
                 <TextView
                     android:id="@+id/tagsText"
                     android:layout_width="0dp"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:text="TextView" />

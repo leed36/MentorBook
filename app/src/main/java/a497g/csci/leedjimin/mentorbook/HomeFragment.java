@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
     ArrayList<String> userList;
     RelativeLayout myLayout;
     LinearLayout myContainer;
-    Button profileBtn;
+    String un;
 //    String userName = MainActivity.username;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
 
     public void updateView(ArrayList<String> listArg) {
         for (String s: listArg) {
-            final String un = getUsername(s);
+            un = getUsername(s);
             LayoutInflater layoutInflater =
                     (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -82,21 +82,26 @@ public class HomeFragment extends Fragment {
             newText.setTextSize(25);
 
             /** Add profile button for added TextView    **/
-            profileBtn = (Button) addView.findViewById(R.id.viewProf);
+            Button profileBtn = (Button) addView.findViewById(R.id.viewProf);
 
             /** View functionality for button  **/
             profileBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), ViewUserActivity.class);
-                    intent.putExtra("username", un);
-                    startActivity(intent);
+                    startIntent(un);
                 }
             });
 
             /** Add new TextView to current xml layout  **/
             myContainer.addView(addView);
         }
+    }
+
+    public void startIntent(String a) {
+        Log.w("username from listener", a);
+        Intent intent = new Intent(getActivity(), ViewUserActivity.class);
+        intent.putExtra("username", a);
+        startActivity(intent);
     }
 
     public String getUsername(String st) {
