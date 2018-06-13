@@ -3,17 +3,20 @@ package a497g.csci.leedjimin.mentorbook;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 public class ViewUserActivity extends AppCompatActivity {
     DatabaseManager dbManager;
-    private String username;
+    private String username = "";
+    private String usernameOfProfile = "";
     //CAN EDIT THESE TVS VVV
     private TextView typeTV, nameTV, emailTV, websiteTV, headlineTV, positionTV, workTV, educationTV, majorTV, coursesTV,
-        scholarshipsTV, adviceTV, tagsTV;
+        scholarshipsTV, adviceText, tagsTV;
 
 
     public void onCreate( Bundle savedInstanceState ) {
@@ -21,9 +24,9 @@ public class ViewUserActivity extends AppCompatActivity {
         dbManager = new DatabaseManager(this);
         setContentView(R.layout.activity_viewprofile);
 
-        username = (String)this.getIntent().getSerializableExtra("Username"); //gets username
-        dbManager.findUser(username);
-        
+        usernameOfProfile = (String)this.getIntent().getSerializableExtra("usernameOfProfile"); //gets username
+        username = (String)this.getIntent().getSerializableExtra("Username");
+        Toast.makeText(this, "usernameProfile: " + usernameOfProfile + "        username: " + username, Toast.LENGTH_LONG).show();
         typeTV = (TextView) findViewById(R.id.mentorOrMentee);
         nameTV = (TextView) findViewById(R.id.nameText);
         emailTV = (TextView) findViewById(R.id.emailText);
@@ -40,7 +43,13 @@ public class ViewUserActivity extends AppCompatActivity {
     }
 
     public void follow(View v) {
+        Toast.makeText(this, "usernameProfile: " + usernameOfProfile + "        username: " + username, Toast.LENGTH_LONG).show();
+        if(dbManager.getFollower(username, usernameOfProfile).equals("")) {
+            dbManager.insertFollower(usernameOfProfile, username);
+        }else{
+            Toast.makeText(this, "already following" + usernameOfProfile, Toast.LENGTH_LONG).show();
 
+        }
     }
 
     public void goBack(View v) {

@@ -59,6 +59,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
     private static final String DEGREE_TABLE = "degreeTable";
     private static final String TAG_TABLE = "tagTable";
     private static final String CHAPTER_TABLE = "chapterTable";
+    private static final String FOLLOWER_TABLE = "followerTable";
 
 
 
@@ -108,6 +109,11 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         sqlCreateTags = sqlCreateTags + " text, tag text,";
         sqlCreateTags += " foreign key(username) references userTable(username))";
 
+        /** Follower table **/
+        String sqlCreateFollower = "create table " + FOLLOWER_TABLE + "(username";
+        sqlCreateFollower = sqlCreateFollower + " text, following text,";
+        sqlCreateFollower = sqlCreateFollower + " foreign key(username) references userTable(username))";
+
         db.execSQL(sqlCreateUser);
         db.execSQL(sqlCreateEducation);
         db.execSQL(sqlCreateCourse);
@@ -115,6 +121,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.execSQL(sqlCreateChapter);
         db.execSQL(sqlCreateDegree);
         db.execSQL(sqlCreateTags);
+        db.execSQL(sqlCreateFollower);
 //        db.execSQL(sqlCreateWork);
         //fake account
 
@@ -129,6 +136,8 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + CHAPTER_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + DEGREE_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + TAG_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + FOLLOWER_TABLE);
+
         onCreate(db);
     }
 
@@ -141,6 +150,29 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + CHAPTER_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + DEGREE_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + TAG_TABLE);
+
+    }
+
+    public String getFollower(String user, String following){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String result = "";
+        try{
+            Cursor cursor = db.rawQuery("SELECT * from " + FOLLOWER_TABLE +" WHERE username = ? and following = ?", new String[] {user,following});
+            if(cursor.moveToFirst())result = cursor.getString(1);
+        }catch(IllegalArgumentException e){
+
+        }
+        db.close();
+        return result;
+    }
+
+    public void insertFollower(String user, String following){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("username",user);
+        values.put("following", following);
+        db.insert(FOLLOWER_TABLE,null,values);
+        db.close();
 
     }
 

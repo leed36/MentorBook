@@ -38,32 +38,32 @@ public class HomeFragment extends Fragment {
     ArrayList<String> userList;
     RelativeLayout myLayout;
     LinearLayout myContainer;
-    Button profileBtn;
+    String un;
 //    String userName = MainActivity.username;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-//        searchBtn = (Button)view.findViewById(R.id.searchBtn);
-//        DB = new DatabaseManager(getActivity());
-//        userList = convertUsers(DB.searchByType("mentor"));
-//
-//        searchEdit = (EditText) view.findViewById(R.id.searchEdit);
-//        myLayout = (RelativeLayout) view.findViewById(R.id.fragmentHome);
-//        myContainer = (LinearLayout) view.findViewById(R.id.container);
-//
-//        updateView(userList);
-//
-//        searchBtn.setOnClickListener(new View.OnClickListener(){
-//
-//            @Override
-//            public void onClick(View v) {
-//                String search = searchEdit.getText().toString();
-//                if (!search.equals("")) {
-////                    DB.
-//                    /** look in DB for the search keyword  and use updateview **/
-//                }
-//            }
-//        });
+        searchBtn = (Button)view.findViewById(R.id.searchBtn);
+        DB = new DatabaseManager(getActivity());
+        userList = convertUsers(DB.searchByType("mentor"));
+
+        searchEdit = (EditText) view.findViewById(R.id.searchEdit);
+        myLayout = (RelativeLayout) view.findViewById(R.id.fragmentHome);
+        myContainer = (LinearLayout) view.findViewById(R.id.container);
+
+        updateView(userList);
+
+        searchBtn.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                String search = searchEdit.getText().toString();
+                if (!search.equals("")) {
+//                    DB.
+                    /** look in DB for the search keyword  and use updateview **/
+                }
+            }
+        });
         return view;
     }
 
@@ -82,14 +82,19 @@ public class HomeFragment extends Fragment {
             newText.setTextSize(25);
 
             /** Add profile button for added TextView    **/
+
+            Button profileBtn;
             profileBtn = (Button) addView.findViewById(R.id.viewProf);
 
             /** View functionality for button  **/
             profileBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Intent intent = new Intent(getActivity(), ViewUserActivity.class);
-                    intent.putExtra("username", un);
+                    intent.putExtra("usernameOfProfile", un);
+                    intent.putExtra("Username", MainActivity.username);
+
                     startActivity(intent);
                 }
             });
