@@ -24,7 +24,7 @@ public class ViewUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_viewprofile);
 
         username = (String)this.getIntent().getSerializableExtra("Username"); //gets username
-        Log.w("username from home frag", username);
+//        Log.w("username from home frag", username);
         user = dbManager.findUser(username);
 
         typeTV = (TextView) findViewById(R.id.mentorOrMentee);
