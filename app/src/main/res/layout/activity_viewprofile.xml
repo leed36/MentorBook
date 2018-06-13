@@ -276,7 +276,7 @@
                     android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:text="TextView" />
+                    android:text="" />
 
             </LinearLayout>
 
@@ -301,7 +301,7 @@
                     android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:text="asdfsadklfjiwejf" />
+                    android:text="" />
 
             </LinearLayout>
 

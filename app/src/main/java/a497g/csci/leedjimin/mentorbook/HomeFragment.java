@@ -61,6 +61,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String search = searchEdit.getText().toString().toLowerCase();
+                myContainer.removeAllViewsInLayout();
                 if (search.equals("followers")) {
                     userList = DB.getAllFollowing(MainActivity.username);
                 }
@@ -74,7 +75,7 @@ public class HomeFragment extends Fragment {
                     userList = convertUsers(DB.searchTag(search));
                     /** look in DB for the search keyword  and use updateview **/
                 }
-                updateView(userList);
+                if (userList.size() != 0) updateView(userList);
             }
         });
         return view;

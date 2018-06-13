@@ -43,6 +43,7 @@ public class ViewUserActivity extends AppCompatActivity {
         adviceTV = (TextView) findViewById(R.id.adviceText);
         tagsTV = (TextView) findViewById(R.id.tagsText);
 
+        //finds the user in the DB
         userOf = dbManager.findUser(usernameOfProfile);
 
         typeTV.setText(userOf.getTYPE());
