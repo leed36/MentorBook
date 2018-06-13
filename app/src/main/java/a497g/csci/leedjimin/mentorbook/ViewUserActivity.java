@@ -17,7 +17,7 @@ public class ViewUserActivity extends AppCompatActivity {
     private User userOf;
     //CAN EDIT THESE TVS VVV
     private TextView typeTV, nameTV, emailTV, websiteTV, headlineTV, positionTV, workTV, educationTV, majorTV, coursesTV,
-        scholarshipsTV, adviceTV, tagsTV;
+        scholarshipsTV, adviceText, tagsTV;
 
 
     public void onCreate( Bundle savedInstanceState ) {
@@ -28,9 +28,6 @@ public class ViewUserActivity extends AppCompatActivity {
         usernameOfProfile = (String)this.getIntent().getSerializableExtra("usernameOfProfile"); //gets username
         username = (String)this.getIntent().getSerializableExtra("Username");
         Toast.makeText(this, "usernameProfile: " + usernameOfProfile + "        username: " + username, Toast.LENGTH_LONG).show();
-
-        userOf = dbManager.findUser(usernameOfProfile);
-
         typeTV = (TextView) findViewById(R.id.mentorOrMentee);
         nameTV = (TextView) findViewById(R.id.nameText);
         emailTV = (TextView) findViewById(R.id.emailText);

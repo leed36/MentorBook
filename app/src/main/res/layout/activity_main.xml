@@ -7,11 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/mentorbook_logo"
+        design:layout_anchor="@+id/fragment_container"
+        design:layout_anchorGravity="top|center" />
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/NavBottom"/>
+        android:layout_below="@+id/logo"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/NavBottom"

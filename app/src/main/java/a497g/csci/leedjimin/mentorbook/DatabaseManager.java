@@ -153,7 +153,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-    public String getFollower(String user, String following){
+    public String getFollowing(String user, String following){
         SQLiteDatabase db = this.getWritableDatabase();
         String result = "";
         try{
@@ -203,7 +203,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         if(curr.moveToFirst()){
             user.setCLASSNAME(curr.getString(1));
         }else{
-            user.setCLASSNAME("");
+            user.setCLASSNAME("ex) CSCI 141 - 2018 ");
         }
         curr.close();
 
@@ -213,7 +213,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             user.setMAJORMINOR(cur.getString(4));
         }else{
             user.setSCHOOL("");
-            user.setMAJORMINOR("");
+            user.setMAJORMINOR("ex) Computer Science / Math");
         }
         cur.close();
 
@@ -417,7 +417,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.update(TABLE_USER, contentValues, "username = ?",new String[] {userNam});
         db.close();
     }
-    
+
 
     public void updateBioU(String userNam, String currPosition, String workHistory, String advice){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -535,6 +535,23 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         }
         db.close();
         return image;
+    }
+
+    public ArrayList<String> getFollowers(String username){
+        ArrayList<String> followers = new ArrayList<String>();
+        String[] args = {username};
+
+        String sqlQuery = "select * from " + FOLLOWER_TABLE + " where username = ?";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, args);
+        while(cursor.moveToNext()){
+            followers.add(cursor.getString(1));
+        }
+
+        db.close();
+        cursor.close();
+        return followers;
+
     }
 
 }
