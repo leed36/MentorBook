@@ -17,7 +17,7 @@ public class ViewUserActivity extends AppCompatActivity {
     private User userOf;
     //CAN EDIT THESE TVS VVV
     private TextView typeTV, nameTV, emailTV, websiteTV, headlineTV, positionTV, workTV, educationTV, majorTV, coursesTV,
-        scholarshipsTV, adviceText, tagsTV;
+        scholarshipsTV, adviceTV, tagsTV;
 
 
     public void onCreate( Bundle savedInstanceState ) {
