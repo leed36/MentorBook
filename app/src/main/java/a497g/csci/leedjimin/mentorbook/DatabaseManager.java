@@ -554,4 +554,21 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         return image;
     }
 
+    public ArrayList<String> getFollowers(String username){
+        ArrayList<String> followers = new ArrayList<String>();
+        String[] args = {username};
+
+        String sqlQuery = "select * from " + FOLLOWER_TABLE + " where username = ?";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, args);
+        while(cursor.moveToNext()){
+            followers.add(cursor.getString(1));
+        }
+
+        db.close();
+        cursor.close();
+        return followers;
+
+    }
+
 }
