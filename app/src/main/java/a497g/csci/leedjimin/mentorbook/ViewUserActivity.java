@@ -12,10 +12,12 @@ public class ViewUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         dbManager = new DatabaseManager(this);
         setContentView(R.layout.activity_viewprofile);
+
+
     }
 
     public void follow(View v) {
-
+        
     }
 
     public void goBack(View v) {

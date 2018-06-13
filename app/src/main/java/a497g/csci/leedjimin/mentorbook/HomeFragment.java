@@ -88,7 +88,11 @@ public class HomeFragment extends Fragment {
             profileBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Intent intent = new Intent(getActivity(), ViewUserActivity.class);
+                    intent.putExtra("Username", MainActivity.username);
+                    intent.putExtra("UserLookedUp", newText.text.toString());
+
                     startActivity(intent);
                 }
             });
