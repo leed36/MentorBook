@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
 
     public void updateView(ArrayList<String> listArg) {
         for (String s: listArg) {
-            un = getUsername(s);
+            final String un = getUsername(s);
             LayoutInflater layoutInflater =
                     (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -82,26 +82,26 @@ public class HomeFragment extends Fragment {
             newText.setTextSize(25);
 
             /** Add profile button for added TextView    **/
-            Button profileBtn = (Button) addView.findViewById(R.id.viewProf);
+
+            Button profileBtn;
+            profileBtn = (Button) addView.findViewById(R.id.viewProf);
 
             /** View functionality for button  **/
             profileBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startIntent(un);
+
+                    Intent intent = new Intent(getActivity(), ViewUserActivity.class);
+                    intent.putExtra("usernameOfProfile", un);
+                    intent.putExtra("Username", MainActivity.username);
+
+                    startActivity(intent);
                 }
             });
 
             /** Add new TextView to current xml layout  **/
             myContainer.addView(addView);
         }
-    }
-
-    public void startIntent(String a) {
-        Log.w("username from listener", a);
-        Intent intent = new Intent(getActivity(), ViewUserActivity.class);
-        intent.putExtra("username", a);
-        startActivity(intent);
     }
 
     public String getUsername(String st) {
