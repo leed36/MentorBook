@@ -203,7 +203,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         if(curr.moveToFirst()){
             user.setCLASSNAME(curr.getString(1));
         }else{
-            user.setCLASSNAME("");
+            user.setCLASSNAME("ex) CSCI 141 - 2018 ");
         }
         curr.close();
 
@@ -213,7 +213,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             user.setMAJORMINOR(cur.getString(4));
         }else{
             user.setSCHOOL("");
-            user.setMAJORMINOR("");
+            user.setMAJORMINOR("ex) Computer Science / Math");
         }
         cur.close();
 
@@ -434,7 +434,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
         db.update(TABLE_USER, contentValues, "username = ?",new String[] {userNam});
         db.close();
     }
-    
+
 
     public void updateBioU(String userNam, String currPosition, String workHistory, String advice){
         SQLiteDatabase db = this.getWritableDatabase();
