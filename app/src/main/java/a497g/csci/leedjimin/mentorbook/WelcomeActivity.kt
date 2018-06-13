@@ -35,7 +35,7 @@ class WelcomeActivity : AppCompatActivity(), Serializable {
 
         if(username.isEmpty() && password.isEmpty()){
             check = false
-            Toast.makeText(this, "One login paramenter is empty, please try again", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "At least one login paramenter is empty, please try again", Toast.LENGTH_LONG).show()
         }
 
         //getUser
@@ -48,7 +48,7 @@ class WelcomeActivity : AppCompatActivity(), Serializable {
         }
 
         if(!user.getPASSWORD().equals(password)){
-            Toast.makeText(this, "DBpass:" + user.getPASSWORD() + " you entered: " + password, Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, "DBpass:" + user.getPASSWORD() + " you entered: " + password, Toast.LENGTH_LONG).show()
 
             check = false
             Toast.makeText(this, "incorrect password", Toast.LENGTH_LONG).show()
@@ -61,7 +61,6 @@ class WelcomeActivity : AppCompatActivity(), Serializable {
             Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
             var insertIntent = Intent(this, MainActivity::class.java)
             insertIntent.putExtra("Username", value)
-//            Log.d("extra", insertIntent.getStringExtra("Username"))
             this.startActivity(insertIntent)
         }
         else{

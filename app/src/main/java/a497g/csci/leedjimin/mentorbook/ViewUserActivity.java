@@ -26,7 +26,6 @@ public class ViewUserActivity extends AppCompatActivity {
 
         usernameOfProfile = (String)this.getIntent().getSerializableExtra("usernameOfProfile"); //gets username
         username = (String)this.getIntent().getSerializableExtra("Username");
-        Toast.makeText(this, "usernameProfile: " + usernameOfProfile + "        username: " + username, Toast.LENGTH_LONG).show();
         typeTV = (TextView) findViewById(R.id.mentorOrMentee);
         nameTV = (TextView) findViewById(R.id.nameText);
         emailTV = (TextView) findViewById(R.id.emailText);
@@ -38,17 +37,15 @@ public class ViewUserActivity extends AppCompatActivity {
         majorTV = (TextView) findViewById(R.id.majorText);
         coursesTV = (TextView) findViewById(R.id.coursesText);
         scholarshipsTV = (TextView) findViewById(R.id.scholarshipsText);
-        adviceTV = (TextView) findViewById(R.id.adviceText);
+       // adviceTV = (TextView) findViewById(R.id.adviceText);
         tagsTV = (TextView) findViewById(R.id.tagsText);
     }
 
     public void follow(View v) {
-        Toast.makeText(this, "usernameProfile: " + usernameOfProfile + "        username: " + username, Toast.LENGTH_LONG).show();
         if(dbManager.getFollower(username, usernameOfProfile).equals("")) {
             dbManager.insertFollower(usernameOfProfile, username);
         }else{
-            Toast.makeText(this, "already following" + usernameOfProfile, Toast.LENGTH_LONG).show();
-
+            Toast.makeText(this, "You are already following "  + usernameOfProfile, Toast.LENGTH_LONG).show();
         }
     }
 
