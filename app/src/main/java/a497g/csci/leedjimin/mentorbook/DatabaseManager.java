@@ -487,6 +487,7 @@ public final class DatabaseManager extends SQLiteOpenHelper {
             db.close();
         }
     }
+
     public void updateBioS(String userNam, String scholarship){
         SQLiteDatabase db3 = this.getWritableDatabase();
         ContentValues content = new ContentValues();
