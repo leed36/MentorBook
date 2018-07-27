@@ -47,14 +47,13 @@ public class HomeFragment extends Fragment {
         DB = new DatabaseManager(getActivity());
         userName = MainActivity.username;
         Log.w("username from home", userName);
-        userList = DB.getAllFollowing(MainActivity.username); //changed to followers query
+        //userList = DB.getAllFollowing(MainActivity.username); //changed to followers query
 
         searchEdit = (EditText) view.findViewById(R.id.searchEdit);
-        searchEdit.setText("followers");
         myLayout = (RelativeLayout) view.findViewById(R.id.fragmentHome);
         myContainer = (LinearLayout) view.findViewById(R.id.container);
 
-        updateView(userList);
+        //updateView(userList);
 
         searchBtn.setOnClickListener(new View.OnClickListener(){
 
